@@ -1,0 +1,15 @@
+{
+  "source_id": "gl_chest_pain_triage",
+  "title": "Acute chest pain triage guideline",
+  "tier": "guideline",
+  "text": "Acute chest pain with features suggesting cardiac origin should be treated as a medical emergency with immediate assessment; do not advise watchful waiting.",
+  "url": "https://example.org/evidence/gl_chest_pain_triage",
+  "topics": [
+    "chest pain",
+    "triage",
+    "emergency",
+    "acs",
+    "urgent",
+    "red flags"
+  ]
+}

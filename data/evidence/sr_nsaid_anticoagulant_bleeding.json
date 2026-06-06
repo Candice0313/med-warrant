@@ -1,0 +1,14 @@
+{
+  "source_id": "sr_nsaid_anticoagulant_bleeding",
+  "title": "NSAIDs and bleeding risk in anticoagulated patients: a meta-analysis",
+  "tier": "systematic_review",
+  "text": "Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk of major and gastrointestinal bleeding compared with anticoagulant alone.",
+  "url": "https://example.org/evidence/sr_nsaid_anticoagulant_bleeding",
+  "topics": [
+    "nsaid",
+    "ibuprofen",
+    "warfarin",
+    "anticoagulant",
+    "bleeding"
+  ]
+}

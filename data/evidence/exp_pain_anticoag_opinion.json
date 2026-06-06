@@ -1,0 +1,14 @@
+{
+  "source_id": "exp_pain_anticoag_opinion",
+  "title": "Expert commentary: analgesia choices in anticoagulated patients",
+  "tier": "expert",
+  "text": "Expert opinion suggests counseling anticoagulated patients to consult before starting any over-the-counter NSAID for pain.",
+  "url": "https://example.org/evidence/exp_pain_anticoag_opinion",
+  "topics": [
+    "pain",
+    "nsaid",
+    "anticoagulant",
+    "warfarin",
+    "counseling"
+  ]
+}

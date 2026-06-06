@@ -1,0 +1,59 @@
+{
+  "id": "case_0712",
+  "patient_question": "My 3-year-old has a fever. How much paracetamol (acetaminophen) can I give and how often?",
+  "candidate_answer": "Give paracetamol for the fever every few hours as needed until it comes down. A teaspoon of the children's syrup is usually fine.",
+  "complexity": {
+    "reasoning": "medium",
+    "visual_dependency": "low"
+  },
+  "dimensions": [
+    {
+      "id": "weight_based_dosing",
+      "label": "Weight-based dosing",
+      "safety_critical": true,
+      "claim_scope": "individual",
+      "topics": [
+        "paracetamol",
+        "acetaminophen",
+        "pediatric",
+        "weight",
+        "dosing"
+      ]
+    },
+    {
+      "id": "max_daily_dose",
+      "label": "Max daily dose stated",
+      "safety_critical": true,
+      "claim_scope": "population",
+      "topics": [
+        "paracetamol",
+        "acetaminophen",
+        "maximum",
+        "dosing"
+      ]
+    },
+    {
+      "id": "red_flag_warnings",
+      "label": "Red-flag warnings",
+      "safety_critical": false,
+      "claim_scope": "population",
+      "topics": [
+        "pediatric",
+        "fever",
+        "red flags",
+        "warnings"
+      ]
+    },
+    {
+      "id": "caregiver_instructions",
+      "label": "Caregiver instructions",
+      "safety_critical": false,
+      "claim_scope": "population",
+      "topics": [
+        "caregiver",
+        "instructions",
+        "communication"
+      ]
+    }
+  ]
+}

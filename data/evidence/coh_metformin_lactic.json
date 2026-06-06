@@ -1,0 +1,13 @@
+{
+  "source_id": "coh_metformin_lactic",
+  "title": "Cohort study: metformin and lactic acidosis incidence",
+  "tier": "cohort",
+  "text": "Lactic acidosis during metformin therapy was rare but concentrated in patients with renal impairment or acute illness.",
+  "url": "https://example.org/evidence/coh_metformin_lactic",
+  "topics": [
+    "metformin",
+    "lactic acidosis",
+    "renal",
+    "contraindication"
+  ]
+}

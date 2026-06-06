@@ -1,0 +1,14 @@
+{
+  "source_id": "gl_pain_alternatives_anticoag",
+  "title": "Pain management guideline for anticoagulated patients",
+  "tier": "guideline",
+  "text": "For patients on anticoagulants, paracetamol is generally preferred first-line for mild pain over NSAIDs because of lower bleeding risk.",
+  "url": "https://example.org/evidence/gl_pain_alternatives_anticoag",
+  "topics": [
+    "pain",
+    "paracetamol",
+    "anticoagulant",
+    "warfarin",
+    "alternative"
+  ]
+}

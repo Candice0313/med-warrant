@@ -1,0 +1,14 @@
+{
+  "source_id": "coh_nsaid_gi_bleed",
+  "title": "Cohort study: NSAID exposure and upper GI bleeding",
+  "tier": "cohort",
+  "text": "An observational cohort found higher rates of upper gastrointestinal bleeding among regular NSAID users, especially older adults and those on anticoagulants.",
+  "url": "https://example.org/evidence/coh_nsaid_gi_bleed",
+  "topics": [
+    "nsaid",
+    "ibuprofen",
+    "gastrointestinal",
+    "bleeding",
+    "elderly"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "gl_warfarin_nsaid_interaction",
+  "title": "Anticoagulant prescribing guideline: NSAID interactions",
+  "tier": "guideline",
+  "text": "Guidelines advise avoiding NSAIDs such as ibuprofen in patients on warfarin where possible; if unavoidable, use the lowest dose for the shortest time with gastroprotection and closer INR monitoring.",
+  "url": "https://example.org/evidence/gl_warfarin_nsaid_interaction",
+  "topics": [
+    "warfarin",
+    "nsaid",
+    "ibuprofen",
+    "interaction",
+    "bleeding",
+    "inr"
+  ]
+}

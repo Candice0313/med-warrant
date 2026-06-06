@@ -1,0 +1,90 @@
+<h2>Phase 3 — App Layout</h2>
+<p class="subtitle">How should the case list and scorecard be arranged?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="sidebar" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:160px;font-size:11px;gap:4px;background:#f8f9fa;border-radius:6px;overflow:hidden">
+        <div style="width:30%;background:#e9ecef;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#adb5bd;height:10px;border-radius:3px;width:80%"></div>
+          <div style="background:#dee2e6;height:28px;border-radius:4px;border-left:3px solid #4dabf7;padding:4px 6px;font-size:9px;color:#495057">Warfarin + ibuprofen</div>
+          <div style="background:#dee2e6;height:28px;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Chest pain triage</div>
+          <div style="background:#dee2e6;height:28px;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Pediatric paracetamol</div>
+          <div style="background:#dee2e6;height:28px;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Metformin sick-day</div>
+        </div>
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#adb5bd;height:10px;border-radius:3px;width:60%"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#fff3bf;height:14px;border-radius:3px"></div>
+          <div style="background:#ffe3e3;height:14px;border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Sidebar + Main</h3>
+      <p>Case list as a fixed left sidebar. Scorecard fills the remaining space. Always-visible navigation.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="top" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="height:160px;font-size:11px;background:#f8f9fa;border-radius:6px;overflow:hidden;padding:8px;display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;gap:4px">
+          <div style="background:#dee2e6;height:40px;flex:1;border-radius:4px;padding:4px 6px;font-size:9px;color:#495057;border-top:3px solid #4dabf7">Warfarin</div>
+          <div style="background:#dee2e6;height:40px;flex:1;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Chest pain</div>
+          <div style="background:#dee2e6;height:40px;flex:1;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Pediatric</div>
+          <div style="background:#dee2e6;height:40px;flex:1;border-radius:4px;padding:4px 6px;font-size:9px;color:#868e96">Metformin</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#adb5bd;height:10px;border-radius:3px;width:50%"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#fff3bf;height:14px;border-radius:3px"></div>
+          <div style="background:#ffe3e3;height:14px;border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Top tabs + Content</h3>
+      <p>Cases as horizontal cards/tabs across the top. Scorecard expands below. Clean when there are few cases.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="twocol" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:160px;font-size:11px;gap:4px;background:#f8f9fa;border-radius:6px;overflow:hidden">
+        <div style="width:38%;background:#e9ecef;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#adb5bd;height:10px;border-radius:3px;width:70%"></div>
+          <div style="background:#fff;height:52px;border-radius:4px;border:1px solid #4dabf7;padding:4px 6px">
+            <div style="font-size:9px;color:#495057;font-weight:600">Warfarin + ibuprofen</div>
+            <div style="font-size:8px;color:#868e96;margin-top:2px">high reasoning · low visual</div>
+            <div style="display:flex;gap:2px;margin-top:4px">
+              <span style="background:#d3f9d8;border-radius:2px;padding:1px 3px;font-size:7px">2 ✓</span>
+              <span style="background:#fff3bf;border-radius:2px;padding:1px 3px;font-size:7px">1 ⚠</span>
+              <span style="background:#ffe3e3;border-radius:2px;padding:1px 3px;font-size:7px">1 ✕</span>
+            </div>
+          </div>
+          <div style="background:#fff;height:38px;border-radius:4px;border:1px solid #dee2e6;padding:4px 6px">
+            <div style="font-size:9px;color:#868e96">Chest pain triage</div>
+          </div>
+        </div>
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#adb5bd;height:10px;border-radius:3px;width:60%"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#d3f9d8;height:14px;border-radius:3px"></div>
+          <div style="background:#fff3bf;height:14px;border-radius:3px"></div>
+          <div style="background:#ffe3e3;height:14px;border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Rich sidebar with verdict preview</h3>
+      <p>Sidebar shows mini-summary per case (trust counts). More information density — good for comparing cases at a glance.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:1rem">Click to select, then let me know in the terminal.</p>

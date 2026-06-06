@@ -1,0 +1,13 @@
+{
+  "source_id": "gl_otc_ibuprofen_dosing",
+  "title": "OTC analgesic labeling guidance: ibuprofen",
+  "tier": "guideline",
+  "text": "Standard over-the-counter adult ibuprofen labeling advises taking with food and not exceeding the stated daily maximum without medical advice.",
+  "url": "https://example.org/evidence/gl_otc_ibuprofen_dosing",
+  "topics": [
+    "ibuprofen",
+    "dosing",
+    "otc",
+    "adult"
+  ]
+}

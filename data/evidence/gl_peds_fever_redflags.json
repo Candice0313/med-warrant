@@ -1,0 +1,14 @@
+{
+  "source_id": "gl_peds_fever_redflags",
+  "title": "Pediatric fever assessment guideline: red flags",
+  "tier": "guideline",
+  "text": "Caregivers should seek urgent review for a feverish child with lethargy, poor feeding, rash that does not blanch, breathing difficulty, or fever in a very young infant.",
+  "url": "https://example.org/evidence/gl_peds_fever_redflags",
+  "topics": [
+    "pediatric",
+    "fever",
+    "red flags",
+    "warnings",
+    "urgent"
+  ]
+}

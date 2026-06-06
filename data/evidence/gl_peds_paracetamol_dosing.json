@@ -1,0 +1,15 @@
+{
+  "source_id": "gl_peds_paracetamol_dosing",
+  "title": "Pediatric formulary: paracetamol dosing",
+  "tier": "guideline",
+  "text": "Pediatric paracetamol is dosed by body weight at defined intervals, with a maximum number of doses per 24 hours; caregivers should be told the maximum daily total.",
+  "url": "https://example.org/evidence/gl_peds_paracetamol_dosing",
+  "topics": [
+    "paracetamol",
+    "acetaminophen",
+    "pediatric",
+    "dosing",
+    "weight",
+    "maximum"
+  ]
+}

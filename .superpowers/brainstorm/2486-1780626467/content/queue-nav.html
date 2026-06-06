@@ -1,0 +1,110 @@
+<h2>Phase 5 — Review Queue Navigation</h2>
+<p class="subtitle">Where should escalated verdicts waiting for human review live?</p>
+
+<div class="cards">
+
+  <!-- A: Header tab -->
+  <div class="card" data-choice="header-tab" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;flex-direction:column;height:160px;background:#f8f9fa;border-radius:6px;overflow:hidden;font-size:11px">
+        <!-- Banner -->
+        <div style="background:#fffbeb;border-bottom:1px solid #fde68a;padding:4px 8px;text-align:center;font-size:9px;color:#92400e">⚠ Demo — not for clinical use</div>
+        <!-- Nav with tabs -->
+        <div style="background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;padding:0 12px;gap:0">
+          <span style="padding:6px 12px;font-size:10px;color:#6b7280">Cases</span>
+          <span style="padding:6px 12px;font-size:10px;color:#1d4ed8;border-bottom:2px solid #1d4ed8;font-weight:600">Review Queue <span style="background:#ef4444;color:#fff;border-radius:10px;padding:1px 5px;font-size:8px;margin-left:3px">3</span></span>
+        </div>
+        <!-- Queue content area -->
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:4px;padding:6px;font-size:9px">
+            <div style="color:#991b1b;font-weight:600">⚠ Drug-interaction safety — UNVERIFIED SAFETY</div>
+            <div style="color:#6b7280;margin-top:2px">Warfarin + ibuprofen case</div>
+            <div style="display:flex;gap:4px;margin-top:4px"><button style="background:#dcfce7;color:#166534;border:none;border-radius:3px;padding:2px 6px;font-size:8px">Approve</button><button style="background:#fff7ed;color:#9a3412;border:none;border-radius:3px;padding:2px 6px;font-size:8px">Override</button></div>
+          </div>
+          <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:4px;padding:6px;font-size:9px">
+            <div style="color:#92400e;font-weight:600">↓ Monitoring & follow-up — LOW CONFIDENCE</div>
+            <div style="color:#6b7280;margin-top:2px">Warfarin + ibuprofen case</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Top nav tab</h3>
+      <p>A second tab next to "Cases" in the header. Red badge shows unreviewed count. Full-page queue view, mirrors the case scorecard structure.</p>
+    </div>
+  </div>
+
+  <!-- B: Sidebar section -->
+  <div class="card" data-choice="sidebar-queue" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:160px;background:#f8f9fa;border-radius:6px;overflow:hidden;font-size:11px">
+        <!-- Sidebar -->
+        <div style="width:38%;background:#fff;border-right:1px solid #e5e7eb;display:flex;flex-direction:column">
+          <div style="padding:6px 8px;font-size:9px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.5px">Cases</div>
+          <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:4px 8px;font-size:9px;color:#1e40af">Warfarin case</div>
+          <div style="padding:4px 8px;font-size:9px;color:#6b7280">Chest pain</div>
+          <div style="flex:1"></div>
+          <!-- Queue section at bottom of sidebar -->
+          <div style="border-top:1px solid #e5e7eb;padding:6px 8px;background:#fef2f2">
+            <div style="font-size:9px;font-weight:600;color:#991b1b;display:flex;justify-content:space-between">
+              <span>⚠ Review Queue</span>
+              <span style="background:#ef4444;color:#fff;border-radius:10px;padding:1px 5px">3</span>
+            </div>
+            <div style="font-size:8px;color:#b91c1c;margin-top:2px">3 escalated, unreviewed</div>
+            <button style="margin-top:4px;background:#ef4444;color:#fff;border:none;border-radius:3px;padding:2px 8px;font-size:8px;width:100%">Open queue →</button>
+          </div>
+        </div>
+        <!-- Main area -->
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:9px;color:#6b7280;font-style:italic">"I'm on warfarin…"</div>
+          <div style="background:#d1fae5;height:12px;border-radius:2px"></div>
+          <div style="background:#fef3c7;height:12px;border-radius:2px"></div>
+          <div style="background:#fee2e2;height:12px;border-radius:2px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Sidebar footer + modal</h3>
+      <p>Queue count pinned to the bottom of the sidebar. Clicking opens a full-screen overlay modal with the queue. Cases view stays beneath it.</p>
+    </div>
+  </div>
+
+  <!-- C: Floating badge -->
+  <div class="card" data-choice="floating" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;flex-direction:column;height:160px;background:#f8f9fa;border-radius:6px;overflow:hidden;font-size:11px;position:relative">
+        <!-- Banner -->
+        <div style="background:#fffbeb;border-bottom:1px solid #fde68a;padding:4px 8px;text-align:center;font-size:9px;color:#92400e;display:flex;justify-content:space-between;align-items:center">
+          <span>⚠ Demo — not for clinical use</span>
+          <!-- Floating badge in header right -->
+          <button style="background:#ef4444;color:#fff;border:none;border-radius:20px;padding:2px 8px;font-size:9px;font-weight:600">⚠ 3 to review</button>
+        </div>
+        <div style="display:flex;flex:1;overflow:hidden">
+          <!-- Sidebar -->
+          <div style="width:38%;background:#fff;border-right:1px solid #e5e7eb;padding:8px">
+            <div style="background:#eff6ff;border-left:3px solid #3b82f6;padding:4px 6px;font-size:9px;color:#1e40af">Warfarin case</div>
+            <div style="padding:4px 6px;font-size:9px;color:#6b7280;margin-top:2px">Chest pain</div>
+          </div>
+          <!-- Main with slide-in drawer hint -->
+          <div style="flex:1;padding:8px;position:relative">
+            <div style="font-size:9px;color:#6b7280;font-style:italic;margin-bottom:4px">"I'm on warfarin…"</div>
+            <div style="background:#d1fae5;height:10px;border-radius:2px;margin-bottom:2px"></div>
+            <div style="background:#fef3c7;height:10px;border-radius:2px;margin-bottom:2px"></div>
+            <!-- Queue drawer sliding in from right -->
+            <div style="position:absolute;right:0;top:0;bottom:0;width:55%;background:#fff;border-left:1px solid #e5e7eb;padding:6px;box-shadow:-4px 0 8px rgba(0,0,0,.08)">
+              <div style="font-size:9px;font-weight:600;color:#991b1b;margin-bottom:4px">⚠ Review Queue</div>
+              <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:3px;padding:4px;font-size:8px;color:#991b1b">Drug-interaction safety</div>
+              <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:3px;padding:4px;font-size:8px;color:#92400e;margin-top:2px">Monitoring & follow-up</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Header badge + right drawer</h3>
+      <p>Persistent "N to review" pill in the header. Clicking slides open a right-side drawer over the scorecard — no page switch, queue and case are visible together.</p>
+    </div>
+  </div>
+
+</div>
+<p class="subtitle" style="margin-top:1rem">Click to select, then tell me in the terminal.</p>

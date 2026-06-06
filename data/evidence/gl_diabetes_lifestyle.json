@@ -1,0 +1,14 @@
+{
+  "source_id": "gl_diabetes_lifestyle",
+  "title": "Type 2 diabetes guideline: lifestyle advice",
+  "tier": "guideline",
+  "text": "Lifestyle measures including diet and physical activity are recommended alongside pharmacotherapy in type 2 diabetes.",
+  "url": "https://example.org/evidence/gl_diabetes_lifestyle",
+  "topics": [
+    "diabetes",
+    "lifestyle",
+    "diet",
+    "exercise",
+    "type 2"
+  ]
+}

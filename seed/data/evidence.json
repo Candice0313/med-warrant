@@ -1,0 +1,245 @@
+{
+  "_note": "Synthetic / public-knowledge evidence library for a DEMO. Not for clinical use. URLs are placeholders.",
+  "sources": [
+    {
+      "source_id": "sr_nsaid_anticoagulant_bleeding",
+      "title": "NSAIDs and bleeding risk in anticoagulated patients: a meta-analysis",
+      "tier": "systematic_review",
+      "text": "Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk of major and gastrointestinal bleeding compared with anticoagulant alone.",
+      "url": "https://example.org/evidence/sr_nsaid_anticoagulant_bleeding",
+      "topics": ["nsaid", "ibuprofen", "warfarin", "anticoagulant", "bleeding"]
+    },
+    {
+      "source_id": "sr_paracetamol_peds_safety",
+      "title": "Weight-based paracetamol dosing in children: systematic review",
+      "tier": "systematic_review",
+      "text": "Weight-based dosing of paracetamol in children is associated with fewer dosing errors than age-based dosing; exceeding recommended daily limits is the main driver of hepatotoxicity.",
+      "url": "https://example.org/evidence/sr_paracetamol_peds_safety",
+      "topics": ["paracetamol", "acetaminophen", "pediatric", "dosing", "fever"]
+    },
+    {
+      "source_id": "sr_metformin_renal",
+      "title": "Metformin and renal function: systematic review of safety thresholds",
+      "tier": "systematic_review",
+      "text": "Metformin use at reduced or contraindicated renal function is associated with increased risk of lactic acidosis; eGFR-based thresholds reduce that risk.",
+      "url": "https://example.org/evidence/sr_metformin_renal",
+      "topics": ["metformin", "renal", "egfr", "lactic acidosis", "contraindication"]
+    },
+    {
+      "source_id": "sr_troponin_acs",
+      "title": "Diagnostic accuracy of high-sensitivity troponin in suspected ACS",
+      "tier": "systematic_review",
+      "text": "High-sensitivity troponin assays have high sensitivity for acute coronary syndrome and support rapid rule-out pathways when combined with clinical assessment.",
+      "url": "https://example.org/evidence/sr_troponin_acs",
+      "topics": ["chest pain", "acs", "troponin", "triage", "cardiac"]
+    },
+    {
+      "source_id": "rct_ibuprofen_gastro",
+      "title": "Randomized trial of short-course ibuprofen and gastrointestinal events",
+      "tier": "rct",
+      "text": "In a randomized trial, short-course ibuprofen increased minor gastrointestinal events versus placebo; risk was higher in patients with bleeding risk factors.",
+      "url": "https://example.org/evidence/rct_ibuprofen_gastro",
+      "topics": ["ibuprofen", "nsaid", "gastrointestinal", "bleeding"]
+    },
+    {
+      "source_id": "rct_acetaminophen_fever_efficacy",
+      "title": "RCT of weight-based acetaminophen for pediatric fever",
+      "tier": "rct",
+      "text": "Weight-based acetaminophen reduced fever effectively in children with a wide safety margin when total daily dose limits were respected.",
+      "url": "https://example.org/evidence/rct_acetaminophen_fever_efficacy",
+      "topics": ["acetaminophen", "paracetamol", "pediatric", "fever", "dosing"]
+    },
+    {
+      "source_id": "rct_warfarin_inr_monitoring",
+      "title": "RCT comparing INR monitoring intervals in warfarin therapy",
+      "tier": "rct",
+      "text": "More frequent INR monitoring after introducing interacting medications reduced out-of-range values and bleeding events in warfarin-treated patients.",
+      "url": "https://example.org/evidence/rct_warfarin_inr_monitoring",
+      "topics": ["warfarin", "inr", "monitoring", "anticoagulant", "follow-up"]
+    },
+    {
+      "source_id": "rct_metformin_glycemic",
+      "title": "RCT of metformin for glycemic control in type 2 diabetes",
+      "tier": "rct",
+      "text": "Metformin improved glycemic control versus placebo in adults with type 2 diabetes and adequate renal function.",
+      "url": "https://example.org/evidence/rct_metformin_glycemic",
+      "topics": ["metformin", "diabetes", "glycemic", "type 2"]
+    },
+    {
+      "source_id": "rct_early_acs_pathway",
+      "title": "RCT of accelerated chest-pain assessment pathways",
+      "tier": "rct",
+      "text": "An accelerated assessment pathway for low-risk chest pain safely reduced length of stay without increasing missed events.",
+      "url": "https://example.org/evidence/rct_early_acs_pathway",
+      "topics": ["chest pain", "acs", "triage", "pathway"]
+    },
+    {
+      "source_id": "gl_warfarin_nsaid_interaction",
+      "title": "Anticoagulant prescribing guideline: NSAID interactions",
+      "tier": "guideline",
+      "text": "Guidelines advise avoiding NSAIDs such as ibuprofen in patients on warfarin where possible; if unavoidable, use the lowest dose for the shortest time with gastroprotection and closer INR monitoring.",
+      "url": "https://example.org/evidence/gl_warfarin_nsaid_interaction",
+      "topics": ["warfarin", "nsaid", "ibuprofen", "interaction", "bleeding", "inr"]
+    },
+    {
+      "source_id": "gl_otc_ibuprofen_dosing",
+      "title": "OTC analgesic labeling guidance: ibuprofen",
+      "tier": "guideline",
+      "text": "Standard over-the-counter adult ibuprofen labeling advises taking with food and not exceeding the stated daily maximum without medical advice.",
+      "url": "https://example.org/evidence/gl_otc_ibuprofen_dosing",
+      "topics": ["ibuprofen", "dosing", "otc", "adult"]
+    },
+    {
+      "source_id": "gl_pain_alternatives_anticoag",
+      "title": "Pain management guideline for anticoagulated patients",
+      "tier": "guideline",
+      "text": "For patients on anticoagulants, paracetamol is generally preferred first-line for mild pain over NSAIDs because of lower bleeding risk.",
+      "url": "https://example.org/evidence/gl_pain_alternatives_anticoag",
+      "topics": ["pain", "paracetamol", "anticoagulant", "warfarin", "alternative"]
+    },
+    {
+      "source_id": "gl_peds_paracetamol_dosing",
+      "title": "Pediatric formulary: paracetamol dosing",
+      "tier": "guideline",
+      "text": "Pediatric paracetamol is dosed by body weight at defined intervals, with a maximum number of doses per 24 hours; caregivers should be told the maximum daily total.",
+      "url": "https://example.org/evidence/gl_peds_paracetamol_dosing",
+      "topics": ["paracetamol", "acetaminophen", "pediatric", "dosing", "weight", "maximum"]
+    },
+    {
+      "source_id": "gl_peds_fever_redflags",
+      "title": "Pediatric fever assessment guideline: red flags",
+      "tier": "guideline",
+      "text": "Caregivers should seek urgent review for a feverish child with lethargy, poor feeding, rash that does not blanch, breathing difficulty, or fever in a very young infant.",
+      "url": "https://example.org/evidence/gl_peds_fever_redflags",
+      "topics": ["pediatric", "fever", "red flags", "warnings", "urgent"]
+    },
+    {
+      "source_id": "gl_chest_pain_triage",
+      "title": "Acute chest pain triage guideline",
+      "tier": "guideline",
+      "text": "Acute chest pain with features suggesting cardiac origin should be treated as a medical emergency with immediate assessment; do not advise watchful waiting.",
+      "url": "https://example.org/evidence/gl_chest_pain_triage",
+      "topics": ["chest pain", "triage", "emergency", "acs", "urgent", "red flags"]
+    },
+    {
+      "source_id": "gl_chest_pain_redflags",
+      "title": "Chest pain red-flag features",
+      "tier": "guideline",
+      "text": "Red-flag chest pain features include radiation to arm or jaw, sweating, breathlessness, and associated collapse, warranting emergency evaluation.",
+      "url": "https://example.org/evidence/gl_chest_pain_redflags",
+      "topics": ["chest pain", "red flags", "acs", "emergency", "recognition"]
+    },
+    {
+      "source_id": "gl_metformin_contraindication",
+      "title": "Metformin prescribing guideline: contraindications",
+      "tier": "guideline",
+      "text": "Metformin is contraindicated or requires dose review below defined renal thresholds and should be withheld during acute illness with dehydration.",
+      "url": "https://example.org/evidence/gl_metformin_contraindication",
+      "topics": ["metformin", "contraindication", "renal", "egfr", "acute illness"]
+    },
+    {
+      "source_id": "gl_diabetes_lifestyle",
+      "title": "Type 2 diabetes guideline: lifestyle advice",
+      "tier": "guideline",
+      "text": "Lifestyle measures including diet and physical activity are recommended alongside pharmacotherapy in type 2 diabetes.",
+      "url": "https://example.org/evidence/gl_diabetes_lifestyle",
+      "topics": ["diabetes", "lifestyle", "diet", "exercise", "type 2"]
+    },
+    {
+      "source_id": "coh_nsaid_gi_bleed",
+      "title": "Cohort study: NSAID exposure and upper GI bleeding",
+      "tier": "cohort",
+      "text": "An observational cohort found higher rates of upper gastrointestinal bleeding among regular NSAID users, especially older adults and those on anticoagulants.",
+      "url": "https://example.org/evidence/coh_nsaid_gi_bleed",
+      "topics": ["nsaid", "ibuprofen", "gastrointestinal", "bleeding", "elderly"]
+    },
+    {
+      "source_id": "coh_warfarin_adverse_events",
+      "title": "Cohort of warfarin-related adverse events in primary care",
+      "tier": "cohort",
+      "text": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+      "url": "https://example.org/evidence/coh_warfarin_adverse_events",
+      "topics": ["warfarin", "bleeding", "monitoring", "inr", "follow-up", "interaction"]
+    },
+    {
+      "source_id": "coh_peds_dosing_errors",
+      "title": "Cohort study of pediatric medication dosing errors at home",
+      "tier": "cohort",
+      "text": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+      "url": "https://example.org/evidence/coh_peds_dosing_errors",
+      "topics": ["pediatric", "dosing", "errors", "caregiver", "instructions", "paracetamol"]
+    },
+    {
+      "source_id": "coh_metformin_lactic",
+      "title": "Cohort study: metformin and lactic acidosis incidence",
+      "tier": "cohort",
+      "text": "Lactic acidosis during metformin therapy was rare but concentrated in patients with renal impairment or acute illness.",
+      "url": "https://example.org/evidence/coh_metformin_lactic",
+      "topics": ["metformin", "lactic acidosis", "renal", "contraindication"]
+    },
+    {
+      "source_id": "coh_chest_pain_outcomes",
+      "title": "Cohort of outcomes after chest-pain presentations",
+      "tier": "cohort",
+      "text": "Delayed presentation in chest pain with cardiac features was associated with worse outcomes, supporting urgent assessment.",
+      "url": "https://example.org/evidence/coh_chest_pain_outcomes",
+      "topics": ["chest pain", "outcomes", "acs", "urgent", "triage"]
+    },
+    {
+      "source_id": "coh_inr_followup",
+      "title": "Cohort: INR follow-up adherence and bleeding",
+      "tier": "cohort",
+      "text": "Patients with consistent INR follow-up after medication changes had fewer out-of-range readings.",
+      "url": "https://example.org/evidence/coh_inr_followup",
+      "topics": ["inr", "monitoring", "follow-up", "warfarin"]
+    },
+    {
+      "source_id": "exp_pain_anticoag_opinion",
+      "title": "Expert commentary: analgesia choices in anticoagulated patients",
+      "tier": "expert",
+      "text": "Expert opinion suggests counseling anticoagulated patients to consult before starting any over-the-counter NSAID for pain.",
+      "url": "https://example.org/evidence/exp_pain_anticoag_opinion",
+      "topics": ["pain", "nsaid", "anticoagulant", "warfarin", "counseling"]
+    },
+    {
+      "source_id": "exp_peds_dosing_opinion",
+      "title": "Expert opinion: communicating pediatric dosing to caregivers",
+      "tier": "expert",
+      "text": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+      "url": "https://example.org/evidence/exp_peds_dosing_opinion",
+      "topics": ["pediatric", "dosing", "caregiver", "instructions", "communication"]
+    },
+    {
+      "source_id": "exp_chest_pain_casereport",
+      "title": "Case report: atypical presentation of acute coronary syndrome",
+      "tier": "expert",
+      "text": "A case report describes an atypical chest-pain presentation initially mistaken for indigestion, underscoring caution against reassurance without assessment.",
+      "url": "https://example.org/evidence/exp_chest_pain_casereport",
+      "topics": ["chest pain", "acs", "atypical", "case report", "red flags"]
+    },
+    {
+      "source_id": "exp_metformin_sickday",
+      "title": "Expert guidance: sick-day rules for metformin",
+      "tier": "expert",
+      "text": "Experts advise temporarily withholding metformin during acute dehydrating illness and seeking advice.",
+      "url": "https://example.org/evidence/exp_metformin_sickday",
+      "topics": ["metformin", "sick day", "acute illness", "contraindication", "renal"]
+    },
+    {
+      "source_id": "exp_diabetes_monitoring_opinion",
+      "title": "Expert opinion: individualizing diabetes monitoring",
+      "tier": "expert",
+      "text": "Monitoring frequency in diabetes should be individualized to the patient's risk and circumstances.",
+      "url": "https://example.org/evidence/exp_diabetes_monitoring_opinion",
+      "topics": ["diabetes", "monitoring", "individual", "follow-up"]
+    },
+    {
+      "source_id": "exp_ibuprofen_food_opinion",
+      "title": "Pharmacist commentary: taking ibuprofen with food",
+      "tier": "expert",
+      "text": "Pharmacists commonly advise taking ibuprofen with food to reduce stomach upset, though this does not eliminate bleeding risk.",
+      "url": "https://example.org/evidence/exp_ibuprofen_food_opinion",
+      "topics": ["ibuprofen", "food", "dosing", "stomach"]
+    }
+  ]
+}

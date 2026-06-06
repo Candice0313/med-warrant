@@ -1,0 +1,121 @@
+<h2>Evidence Inspection UX</h2>
+<p class="subtitle">Grounding snippets need to be visible and inspectable. Two decisions in one: where are they surfaced, and how does the full source open?</p>
+
+<div class="cards">
+
+  <!-- A: Inline chips + right drawer -->
+  <div class="card" data-choice="chips-drawer" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:6px;border:1px solid #e5e7eb;font-size:11px;overflow:hidden">
+        <!-- DimensionRow -->
+        <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:8px 10px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;flex:1;color:#111">Drug-interaction safety</span>
+            <span style="background:#16a34a;color:#fff;font-size:8px;padding:1px 5px;border-radius:3px">T1</span>
+            <span style="color:#16a34a;font-weight:700">88%</span>
+          </div>
+          <!-- Bar -->
+          <div style="height:8px;background:#e5e7eb;border-radius:4px;position:relative;margin-bottom:6px">
+            <div style="position:absolute;height:100%;width:88%;background:#2f9e44;border-radius:4px"></div>
+            <div style="position:absolute;height:130%;top:-15%;left:95%;width:2px;background:#6b7280"></div>
+          </div>
+          <!-- Evidence chips -->
+          <div style="display:flex;gap:4px;flex-wrap:wrap">
+            <button style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:12px;padding:1px 7px;font-size:8px;cursor:pointer">📄 sr_nsaid_anticoagulant · score 4</button>
+            <button style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:12px;padding:1px 7px;font-size:8px;cursor:pointer">📄 gl_warfarin_nsaid · score 5</button>
+          </div>
+        </div>
+        <!-- Drawer sliding in -->
+        <div style="background:#fff;border-top:1px solid #e5e7eb;padding:8px 10px">
+          <div style="font-size:9px;font-weight:600;color:#1e40af;margin-bottom:4px">📄 sr_nsaid_anticoagulant_bleeding <span style="background:#dbeafe;border-radius:3px;padding:1px 4px">T1 systematic review</span></div>
+          <div style="font-size:9px;color:#374151;line-height:1.5;background:#f8fafc;border-radius:4px;padding:6px;border-left:2px solid #93c5fd">"Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk of major and gastrointestinal bleeding…"</div>
+          <a style="font-size:8px;color:#6b7280;display:block;margin-top:3px">🔗 example.org/evidence/sr_nsaid…</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Chips below bar + inline expansion</h3>
+      <p>Small clickable source chips appear below the confidence bar on each DimensionRow. Clicking one expands the source text inline beneath the row. Stays in-context, no navigation.</p>
+    </div>
+  </div>
+
+  <!-- B: Chips + right slide drawer -->
+  <div class="card" data-choice="chips-sidedrawer" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="display:flex;height:155px;background:#f8f9fa;border-radius:6px;overflow:hidden;font-size:11px;gap:0">
+        <!-- Main scorecard area -->
+        <div style="flex:1;padding:8px;display:flex;flex-direction:column;gap:4px">
+          <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:6px 8px;border-radius:0 4px 4px 0">
+            <div style="display:flex;align-items:center;gap:4px">
+              <span style="font-weight:600;font-size:10px;flex:1">Drug-interaction safety</span>
+              <span style="color:#16a34a;font-weight:700;font-size:10px">88%</span>
+            </div>
+            <div style="height:6px;background:#e5e7eb;border-radius:3px;margin:3px 0;position:relative">
+              <div style="position:absolute;height:100%;width:88%;background:#2f9e44;border-radius:3px"></div>
+            </div>
+            <div style="display:flex;gap:3px">
+              <button style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:10px;padding:1px 5px;font-size:7px">📄 sr_nsaid · 4</button>
+              <button style="background:#eff6ff;color:#3b82f6;border:1px solid #bfdbfe;border-radius:10px;padding:1px 5px;font-size:7px">📄 gl_warfarin · 5</button>
+            </div>
+          </div>
+          <div style="border-left:4px solid #f59e0b;background:#fffbeb;padding:6px 8px;border-radius:0 4px 4px 0">
+            <div style="font-size:10px;font-weight:600;color:#111">Monitoring & follow-up</div>
+          </div>
+        </div>
+        <!-- Right side drawer -->
+        <div style="width:45%;background:#fff;border-left:1px solid #e5e7eb;padding:8px;box-shadow:-3px 0 8px rgba(0,0,0,.06)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:9px;font-weight:700;color:#1e40af">Evidence Source</span>
+            <span style="font-size:10px;color:#9ca3af;cursor:pointer">✕</span>
+          </div>
+          <div style="font-size:9px;font-weight:600;color:#111;margin-bottom:2px">sr_nsaid_anticoagulant_bleeding</div>
+          <span style="background:#dbeafe;color:#1e40af;border-radius:3px;padding:1px 5px;font-size:7px">T1 systematic review</span>
+          <div style="margin-top:5px;font-size:8px;color:#374151;line-height:1.5;background:#f8fafc;border-radius:3px;padding:5px;border-left:2px solid #93c5fd">"Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk…"</div>
+          <a style="font-size:7px;color:#6b7280;display:block;margin-top:3px">🔗 example.org/evidence/sr…</a>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Chips below bar + right-side drawer</h3>
+      <p>Chips on each DimensionRow. Clicking slides open a persistent right-side panel showing the full source. Panel stays open as you navigate rows — good for comparing multiple sources.</p>
+    </div>
+  </div>
+
+  <!-- C: No chips on scorecard — evidence only in queue -->
+  <div class="card" data-choice="queue-only" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:6px;border:1px solid #e5e7eb;font-size:11px;overflow:hidden">
+        <!-- Normal scorecard row - no chips -->
+        <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:8px 10px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span style="font-weight:600;flex:1;color:#111">Drug-interaction safety</span>
+            <span style="background:#16a34a;color:#fff;font-size:8px;padding:1px 5px;border-radius:3px">T1</span>
+            <span style="color:#16a34a;font-weight:700">88%</span>
+          </div>
+          <div style="height:8px;background:#e5e7eb;border-radius:4px;margin-bottom:2px;position:relative">
+            <div style="position:absolute;height:100%;width:88%;background:#2f9e44;border-radius:4px"></div>
+          </div>
+          <div style="font-size:8px;color:#9ca3af">model 88% · ceiling 95%</div>
+        </div>
+        <!-- Queue card with evidence -->
+        <div style="border-top:1px solid #fee2e2;background:#fff5f5;padding:8px 10px">
+          <div style="font-size:9px;font-weight:600;color:#991b1b">Queue: Monitoring & follow-up ↓ LOW CONFIDENCE</div>
+          <div style="margin-top:4px;font-size:8px;color:#6b7280">Model reasoning: No INR monitoring advice given…</div>
+          <div style="margin-top:4px;display:flex;gap:3px">
+            <button style="background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;border-radius:10px;padding:1px 5px;font-size:7px">📄 rct_warfarin_inr · score 3 ↗</button>
+          </div>
+          <div style="margin-top:4px;display:flex;gap:4px">
+            <button style="background:#dcfce7;color:#166534;border:none;border-radius:3px;padding:2px 8px;font-size:8px">Approve</button>
+            <button style="background:#fff7ed;color:#9a3412;border:none;border-radius:3px;padding:2px 8px;font-size:8px">Override…</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Evidence only in Review Queue</h3>
+      <p>Scorecard rows stay clean — no chips. Evidence snippets (with modal) appear only inside queue cards, where reviewers actually need them. Simpler scorecard, richer queue.</p>
+    </div>
+  </div>
+
+</div>
+<p class="subtitle" style="margin-top:1rem">Click to select, then tell me in the terminal.</p>

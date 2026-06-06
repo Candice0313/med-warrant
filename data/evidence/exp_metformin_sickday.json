@@ -1,0 +1,14 @@
+{
+  "source_id": "exp_metformin_sickday",
+  "title": "Expert guidance: sick-day rules for metformin",
+  "tier": "expert",
+  "text": "Experts advise temporarily withholding metformin during acute dehydrating illness and seeking advice.",
+  "url": "https://example.org/evidence/exp_metformin_sickday",
+  "topics": [
+    "metformin",
+    "sick day",
+    "acute illness",
+    "contraindication",
+    "renal"
+  ]
+}

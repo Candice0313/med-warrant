@@ -1,0 +1,14 @@
+{
+  "source_id": "exp_chest_pain_casereport",
+  "title": "Case report: atypical presentation of acute coronary syndrome",
+  "tier": "expert",
+  "text": "A case report describes an atypical chest-pain presentation initially mistaken for indigestion, underscoring caution against reassurance without assessment.",
+  "url": "https://example.org/evidence/exp_chest_pain_casereport",
+  "topics": [
+    "chest pain",
+    "acs",
+    "atypical",
+    "case report",
+    "red flags"
+  ]
+}

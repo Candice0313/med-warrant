@@ -1,0 +1,131 @@
+<h2>Phase 6 — How is explore mode activated?</h2>
+<p class="subtitle">The TierSelector lets you re-ground a verdict to any evidence tier and watch the confidence bar move live. The question is: how does that selector appear?</p>
+
+<div class="cards">
+
+  <!-- A: Always-on dropdown -->
+  <div class="card" data-choice="always-on" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:6px;border:1px solid #e5e7eb;font-size:11px;overflow:hidden">
+        <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:8px 10px">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-weight:600;flex:1">Drug-interaction safety</span>
+            <span style="background:#16a34a;color:#fff;font-size:8px;padding:1px 5px;border-radius:3px;font-weight:700">SAFETY</span>
+            <!-- Always-visible dropdown -->
+            <select style="font-size:9px;border:1px solid #d1d5db;border-radius:4px;padding:1px 4px;background:#fff;color:#374151">
+              <option>T1 — systematic review</option>
+              <option selected>T4 — guideline</option>
+              <option>T6 — model prior</option>
+            </select>
+            <span style="color:#16a34a;font-weight:700">80%</span>
+          </div>
+          <div style="height:8px;background:#e5e7eb;border-radius:4px;margin:5px 0;position:relative">
+            <div style="position:absolute;height:100%;width:88%;background:#a5d8a7;border-radius:4px;opacity:0.35"></div>
+            <div style="position:absolute;height:100%;width:80%;background:#2f9e44;border-radius:4px"></div>
+            <div style="position:absolute;height:130%;top:-15%;left:80%;width:2px;background:#6b7280"></div>
+          </div>
+          <div style="font-size:8px;color:#9ca3af;display:flex;justify-content:space-between"><span>model 88%</span><span>ceiling 80%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Always-on inline dropdown</h3>
+      <p>Tier dropdown always visible on every row — no mode to activate. The current (real) tier is pre-selected. Changing it immediately re-caps and shows a visual "explored" indicator. Simplest interaction model.</p>
+    </div>
+  </div>
+
+  <!-- B: Per-row "Explore" button -->
+  <div class="card" data-choice="per-row" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:6px;border:1px solid #e5e7eb;font-size:11px;overflow:hidden;display:flex;flex-direction:column;gap:0">
+        <!-- Row 1: normal -->
+        <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:8px 10px;border-bottom:1px solid #e5e7eb">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-weight:600;flex:1">Drug-interaction safety</span>
+            <span style="background:#16a34a;color:#fff;font-size:8px;padding:1px 5px;border-radius:3px">SAFETY</span>
+            <button style="font-size:8px;color:#6366f1;border:1px solid #e0e7ff;background:#eef2ff;border-radius:4px;padding:1px 6px">Explore ↓</button>
+            <span style="color:#16a34a;font-weight:700">88%</span>
+          </div>
+          <div style="height:7px;background:#e5e7eb;border-radius:4px;margin:4px 0;position:relative">
+            <div style="position:absolute;height:100%;width:88%;background:#2f9e44;border-radius:4px"></div>
+            <div style="position:absolute;height:130%;top:-15%;left:95%;width:2px;background:#6b7280"></div>
+          </div>
+        </div>
+        <!-- Row 2: explore open, showing danger state -->
+        <div style="border-left:4px solid #ef4444;background:#fff5f5;padding:8px 10px">
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span style="font-weight:600;flex:1">Monitoring & follow-up</span>
+            <select style="font-size:9px;border:1px solid #fca5a5;border-radius:4px;padding:1px 4px;background:#fef2f2;color:#991b1b;font-weight:600">
+              <option>T2 — rct (actual)</option>
+              <option selected>T6 — model prior</option>
+            </select>
+            <span style="background:#ef4444;color:#fff;border-radius:3px;padding:1px 5px;font-size:8px">⚠ DANGER</span>
+            <button style="font-size:8px;color:#6b7280;border:none;background:none">↩ reset</button>
+            <span style="color:#ef4444;font-weight:700">40%</span>
+          </div>
+          <div style="height:7px;background:#e5e7eb;border-radius:4px;margin:4px 0;position:relative">
+            <div style="position:absolute;height:100%;width:45%;background:#fca5a5;border-radius:4px;opacity:0.4"></div>
+            <div style="position:absolute;height:100%;width:40%;background:#ef4444;border-radius:4px"></div>
+            <div style="position:absolute;height:130%;top:-15%;left:40%;width:2px;background:#6b7280"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Per-row "Explore" button</h3>
+      <p>Each row has a small "Explore ↓" button that reveals a dropdown for that row only. Explored rows are visually transformed (different border, "↩ reset" link). Other rows stay untouched.</p>
+    </div>
+  </div>
+
+  <!-- C: Global toggle -->
+  <div class="card" data-choice="global-toggle" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#fff;border-radius:6px;border:1px solid #e5e7eb;font-size:11px;overflow:hidden">
+        <!-- Case header with toggle -->
+        <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:6px 10px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:9px;font-style:italic;color:#6b7280;flex:1">"I'm on warfarin…"</span>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:9px;color:#6366f1;font-weight:600">Explore mode</span>
+            <!-- Toggle switch ON -->
+            <div style="width:28px;height:14px;background:#6366f1;border-radius:7px;position:relative;cursor:pointer">
+              <div style="position:absolute;right:2px;top:2px;width:10px;height:10px;background:#fff;border-radius:5px"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Row with dropdown visible globally -->
+        <div style="border-left:4px solid #2f9e44;background:#f0fdf4;padding:6px 10px;border-bottom:1px solid #e5e7eb">
+          <div style="display:flex;align-items:center;gap:5px">
+            <span style="font-weight:600;font-size:10px;flex:1">Drug-interaction safety</span>
+            <select style="font-size:8px;border:1px solid #d1d5db;border-radius:3px;padding:1px 3px">
+              <option selected>T1 systematic review</option>
+            </select>
+            <span style="color:#16a34a;font-weight:700;font-size:10px">88%</span>
+          </div>
+          <div style="height:6px;background:#e5e7eb;border-radius:3px;margin:3px 0;position:relative">
+            <div style="position:absolute;height:100%;width:88%;background:#2f9e44;border-radius:3px"></div>
+          </div>
+        </div>
+        <!-- Row changed to danger -->
+        <div style="border-left:4px solid #ef4444;background:#fff5f5;padding:6px 10px">
+          <div style="display:flex;align-items:center;gap:5px">
+            <span style="font-weight:600;font-size:10px;flex:1">Monitoring & follow-up</span>
+            <select style="font-size:8px;border:1px solid #fca5a5;border-radius:3px;padding:1px 3px;background:#fef2f2;color:#991b1b">
+              <option selected>T6 model prior ← changed</option>
+            </select>
+            <span style="background:#ef4444;color:#fff;border-radius:2px;padding:0 4px;font-size:7px">DANGER</span>
+            <span style="color:#ef4444;font-weight:700;font-size:10px">40%</span>
+          </div>
+          <div style="height:6px;background:#e5e7eb;border-radius:3px;margin:3px 0;position:relative">
+            <div style="position:absolute;height:100%;width:40%;background:#ef4444;border-radius:3px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Global "Explore mode" toggle</h3>
+      <p>A single toggle in the case header reveals tier dropdowns on all rows at once. Flipping it off hides all dropdowns and resets any changed tiers to their real values. Cleanest separation between "judged view" and "what-if view."</p>
+    </div>
+  </div>
+
+</div>
+<p class="subtitle" style="margin-top:1rem">Click to select, then tell me in the terminal.</p>

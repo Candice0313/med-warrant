@@ -1,0 +1,14 @@
+{
+  "source_id": "sr_troponin_acs",
+  "title": "Diagnostic accuracy of high-sensitivity troponin in suspected ACS",
+  "tier": "systematic_review",
+  "text": "High-sensitivity troponin assays have high sensitivity for acute coronary syndrome and support rapid rule-out pathways when combined with clinical assessment.",
+  "url": "https://example.org/evidence/sr_troponin_acs",
+  "topics": [
+    "chest pain",
+    "acs",
+    "troponin",
+    "triage",
+    "cardiac"
+  ]
+}

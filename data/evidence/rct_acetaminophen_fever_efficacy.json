@@ -1,0 +1,14 @@
+{
+  "source_id": "rct_acetaminophen_fever_efficacy",
+  "title": "RCT of weight-based acetaminophen for pediatric fever",
+  "tier": "rct",
+  "text": "Weight-based acetaminophen reduced fever effectively in children with a wide safety margin when total daily dose limits were respected.",
+  "url": "https://example.org/evidence/rct_acetaminophen_fever_efficacy",
+  "topics": [
+    "acetaminophen",
+    "paracetamol",
+    "pediatric",
+    "fever",
+    "dosing"
+  ]
+}

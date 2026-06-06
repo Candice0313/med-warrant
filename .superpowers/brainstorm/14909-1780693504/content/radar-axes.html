@@ -1,0 +1,125 @@
+<h2>Profile tab — what does each axis show?</h2>
+<p class="subtitle">The radar has one axis per dimension (4 for the warfarin case). What value is plotted?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="A" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8f9fa;border-radius:6px;display:flex;justify-content:center;">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <!-- Grid rings -->
+        <polygon points="80,10 150,55 150,105 80,150 10,105 10,55" fill="none" stroke="#dee2e6" stroke-width="1"/>
+        <polygon points="80,30 130,62 130,98 80,130 30,98 30,62" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <polygon points="80,50 110,69 110,91 80,110 50,91 50,69" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Axis lines -->
+        <line x1="80" y1="10" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="80" y1="150" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Model confidence (faded outer) -->
+        <polygon points="80,16 145,57 145,103 80,144 15,103 15,57" fill="#4dabf7" fill-opacity="0.12" stroke="#4dabf7" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <!-- Capped confidence (solid inner) -->
+        <polygon points="80,30 130,62 110,91 80,130 30,98 50,69" fill="#4dabf7" fill-opacity="0.3" stroke="#4dabf7" stroke-width="2"/>
+        <!-- Data points capped -->
+        <circle cx="80" cy="30" r="3" fill="#f08c00"/>
+        <circle cx="130" cy="62" r="3" fill="#2f9e44"/>
+        <circle cx="110" cy="91" r="3" fill="#2f9e44"/>
+        <circle cx="80" cy="130" r="3" fill="#e03131"/>
+        <!-- Labels -->
+        <text x="80" y="6" text-anchor="middle" font-size="8" fill="#495057">Monitoring 45%</text>
+        <text x="156" y="53" text-anchor="start" font-size="8" fill="#495057">Dosing 80%</text>
+        <text x="156" y="109" text-anchor="start" font-size="8" fill="#495057">Drug 88%</text>
+        <text x="80" y="158" text-anchor="middle" font-size="8" fill="#495057">Complete 75%</text>
+        <!-- Legend -->
+        <line x1="10" y1="10" x2="22" y2="10" stroke="#4dabf7" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="25" y="13" font-size="7" fill="#868e96">model conf</text>
+        <line x1="10" y1="20" x2="22" y2="20" stroke="#4dabf7" stroke-width="2"/>
+        <text x="25" y="23" font-size="7" fill="#495057">capped conf</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>A — Dual series: model + capped (recommended)</h3>
+      <p>Outer dashed = model confidence. Inner solid = capped/displayed. Mirrors the dual bar in each DimensionRow. The gap between them shows how much evidence pulled confidence down.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="B" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8f9fa;border-radius:6px;display:flex;justify-content:center;">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <!-- Grid rings -->
+        <polygon points="80,10 150,55 150,105 80,150 10,105 10,55" fill="none" stroke="#dee2e6" stroke-width="1"/>
+        <polygon points="80,30 130,62 130,98 80,130 30,98 30,62" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <polygon points="80,50 110,69 110,91 80,110 50,91 50,69" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Axis lines -->
+        <line x1="80" y1="10" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="80" y1="150" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Single capped fill — colour coded per dimension band -->
+        <polygon points="80,48 115,66 110,91 80,130 42,98 42,66" fill="#4dabf7" fill-opacity="0.2" stroke="none"/>
+        <!-- Coloured segments per band -->
+        <line x1="80" y1="48" x2="80" y2="80" stroke="#f08c00" stroke-width="2.5"/>
+        <line x1="115" y1="66" x2="80" y2="80" stroke="#2f9e44" stroke-width="2.5"/>
+        <line x1="110" y1="91" x2="80" y2="80" stroke="#2f9e44" stroke-width="2.5"/>
+        <line x1="80" y1="130" x2="80" y2="80" stroke="#e03131" stroke-width="2.5"/>
+        <line x1="42" y1="98" x2="80" y2="80" stroke="#2f9e44" stroke-width="2.5"/>
+        <line x1="42" y1="66" x2="80" y2="80" stroke="#f08c00" stroke-width="2.5"/>
+        <!-- Dots coloured by band -->
+        <circle cx="80" cy="48" r="4" fill="#f08c00"/>
+        <circle cx="115" cy="66" r="4" fill="#2f9e44"/>
+        <circle cx="110" cy="91" r="4" fill="#2f9e44"/>
+        <circle cx="80" cy="130" r="4" fill="#e03131"/>
+        <!-- Labels -->
+        <text x="80" y="6" text-anchor="middle" font-size="8" fill="#495057">Monitoring 45%</text>
+        <text x="156" y="53" text-anchor="start" font-size="8" fill="#495057">Dosing 80%</text>
+        <text x="156" y="109" text-anchor="start" font-size="8" fill="#495057">Drug 88%</text>
+        <text x="80" y="158" text-anchor="middle" font-size="8" fill="#495057">Complete 75%</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>B — Single series, colour-coded by band</h3>
+      <p>One value per axis (capped confidence). Each axis line and dot coloured green / amber / red by its trust band. Simple to read at a glance.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="C" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:16px;background:#f8f9fa;border-radius:6px;display:flex;justify-content:center;">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <!-- Grid rings labelled by tier -->
+        <polygon points="80,10 150,55 150,105 80,150 10,105 10,55" fill="none" stroke="#dee2e6" stroke-width="1"/>
+        <polygon points="80,30 130,62 130,98 80,130 30,98 30,62" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <polygon points="80,50 110,69 110,91 80,110 50,91 50,69" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Ring labels -->
+        <text x="82" y="9" font-size="6" fill="#adb5bd">T1</text>
+        <text x="82" y="29" font-size="6" fill="#adb5bd">T3</text>
+        <text x="82" y="49" font-size="6" fill="#adb5bd">T5</text>
+        <!-- Axis lines -->
+        <line x1="80" y1="10" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="150" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="80" y1="150" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="105" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <line x1="10" y1="55" x2="80" y2="80" stroke="#dee2e6" stroke-width="0.5"/>
+        <!-- Evidence tier fill (T2=rct, T4=guideline, T1=sr, T1=sr) -->
+        <polygon points="80,30 110,69 80,10 80,10 50,69" fill="#4dabf7" fill-opacity="0.25" stroke="#4dabf7" stroke-width="1.5"/>
+        <circle cx="80" cy="30" r="3" fill="#f08c00" title="T2 RCT"/>
+        <circle cx="110" cy="69" r="3" fill="#adb5bd" title="T4 Guideline"/>
+        <circle cx="80" cy="10" r="3" fill="#2f9e44" title="T1 SR"/>
+        <circle cx="50" cy="69" r="3" fill="#2f9e44" title="T1 SR"/>
+        <!-- Labels -->
+        <text x="80" y="6" text-anchor="middle" font-size="8" fill="#495057">Monitoring T2</text>
+        <text x="156" y="53" text-anchor="start" font-size="8" fill="#495057">Dosing T4</text>
+        <text x="156" y="109" text-anchor="start" font-size="8" fill="#495057">Drug T1</text>
+        <text x="80" y="158" text-anchor="middle" font-size="8" fill="#495057">Complete T1</text>
+      </svg>
+    </div>
+    <div class="card-body">
+      <h3>C — Evidence tier strength per dimension</h3>
+      <p>Axes represent evidence tier (T1 outer = strongest, T6 inner = model prior). Shows which dimensions are well-grounded vs. ungrounded, independent of confidence values.</p>
+    </div>
+  </div>
+
+</div>

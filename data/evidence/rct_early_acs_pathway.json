@@ -1,0 +1,13 @@
+{
+  "source_id": "rct_early_acs_pathway",
+  "title": "RCT of accelerated chest-pain assessment pathways",
+  "tier": "rct",
+  "text": "An accelerated assessment pathway for low-risk chest pain safely reduced length of stay without increasing missed events.",
+  "url": "https://example.org/evidence/rct_early_acs_pathway",
+  "topics": [
+    "chest pain",
+    "acs",
+    "triage",
+    "pathway"
+  ]
+}

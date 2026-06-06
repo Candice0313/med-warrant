@@ -1,0 +1,14 @@
+{
+  "source_id": "rct_warfarin_inr_monitoring",
+  "title": "RCT comparing INR monitoring intervals in warfarin therapy",
+  "tier": "rct",
+  "text": "More frequent INR monitoring after introducing interacting medications reduced out-of-range values and bleeding events in warfarin-treated patients.",
+  "url": "https://example.org/evidence/rct_warfarin_inr_monitoring",
+  "topics": [
+    "warfarin",
+    "inr",
+    "monitoring",
+    "anticoagulant",
+    "follow-up"
+  ]
+}

@@ -1,0 +1,120 @@
+<h2>Phase 7 — ProfileRadar: Where should it live?</h2>
+<p class="subtitle">The radar chart shows evidence strength and confidence across all 4 dimensions at once. Where does it fit in the layout?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="A" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:12px;background:#f8f9fa;border-radius:6px;">
+      <div style="display:flex;gap:8px;height:180px;">
+        <!-- Sidebar -->
+        <div style="width:120px;background:#e9ecef;border-radius:4px;padding:8px;font-size:9px;color:#6c757d;">
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:4px;font-weight:bold;">CASES</div>
+          <div style="background:#4dabf7;border-radius:3px;padding:4px;margin-bottom:3px;color:white;">warfarin case</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:3px;">chest pain</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:3px;">paracetamol</div>
+        </div>
+        <!-- Main -->
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+          <!-- Radar panel pinned at top -->
+          <div style="background:#e7f5ff;border:1.5px solid #74c0fc;border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:9px;font-weight:bold;color:#1971c2;margin-bottom:4px;">EVIDENCE PROFILE ◉</div>
+            <div style="display:flex;justify-content:center;align-items:center;height:60px;">
+              <svg width="60" height="60" viewBox="0 0 60 60">
+                <polygon points="30,5 55,20 50,50 10,50 5,20" fill="none" stroke="#dee2e6" stroke-width="1"/>
+                <polygon points="30,12 48,24 44,46 16,46 12,24" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+                <polygon points="30,8 52,22 47,48 13,48 8,22" fill="#4dabf7" fill-opacity="0.3" stroke="#4dabf7" stroke-width="1.5"/>
+                <circle cx="30" cy="8" r="2" fill="#4dabf7"/>
+                <circle cx="52" cy="22" r="2" fill="#2f9e44"/>
+                <circle cx="47" cy="48" r="2" fill="#2f9e44"/>
+                <circle cx="13" cy="48" r="2" fill="#f08c00"/>
+                <circle cx="8" cy="22" r="2" fill="#e03131"/>
+              </svg>
+            </div>
+          </div>
+          <!-- Dimension rows -->
+          <div style="background:#d3f9d8;border-left:3px solid #2f9e44;border-radius:4px;padding:5px 8px;font-size:9px;color:#2b8a3e;">Monitoring & follow-up · T2 · 45%</div>
+          <div style="background:#e7f5ff;border-left:3px solid #4dabf7;border-radius:4px;padding:5px 8px;font-size:9px;color:#1971c2;">Dosing accuracy · T4 · 80%</div>
+          <div style="background:#fff3bf;border-left:3px solid #f08c00;border-radius:4px;padding:5px 8px;font-size:9px;color:#e67700;">Drug-interaction · T1 · 88%</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Panel above dimension rows</h3>
+      <p>Radar pinned at the top of the scorecard, always visible. User sees the pattern before reading individual rows.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="B" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:12px;background:#f8f9fa;border-radius:6px;">
+      <div style="display:flex;gap:8px;height:180px;">
+        <!-- Sidebar -->
+        <div style="width:120px;background:#e9ecef;border-radius:4px;padding:8px;font-size:9px;color:#6c757d;">
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:4px;font-weight:bold;">CASES</div>
+          <div style="background:#4dabf7;border-radius:3px;padding:4px;margin-bottom:3px;color:white;">warfarin case</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:3px;">chest pain</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;">paracetamol</div>
+        </div>
+        <!-- Main with tabs -->
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+          <!-- Tab bar -->
+          <div style="display:flex;gap:4px;border-bottom:1.5px solid #dee2e6;padding-bottom:4px;">
+            <div style="background:#e7f5ff;border:1.5px solid #4dabf7;border-radius:3px 3px 0 0;padding:3px 8px;font-size:9px;font-weight:bold;color:#1971c2;">Scorecard</div>
+            <div style="background:#f1f3f5;border:1.5px solid #dee2e6;border-radius:3px 3px 0 0;padding:3px 8px;font-size:9px;color:#868e96;">◉ Profile</div>
+          </div>
+          <!-- Dimension rows under tab -->
+          <div style="background:#d3f9d8;border-left:3px solid #2f9e44;border-radius:4px;padding:5px 8px;font-size:9px;color:#2b8a3e;">Monitoring & follow-up · T2 · 45%</div>
+          <div style="background:#e7f5ff;border-left:3px solid #4dabf7;border-radius:4px;padding:5px 8px;font-size:9px;color:#1971c2;">Dosing accuracy · T4 · 80%</div>
+          <div style="background:#fff3bf;border-left:3px solid #f08c00;border-radius:4px;padding:5px 8px;font-size:9px;color:#e67700;">Drug-interaction · T1 · 88%</div>
+          <div style="background:#d3f9d8;border-left:3px solid #2f9e44;border-radius:4px;padding:5px 8px;font-size:9px;color:#2b8a3e;">Completeness · T1 · 75%</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Separate "Profile" tab</h3>
+      <p>Second tab next to Scorecard. Switch between detailed row view and radar overview. Keeps scorecard uncluttered.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="C" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding:12px;background:#f8f9fa;border-radius:6px;">
+      <div style="display:flex;gap:8px;height:180px;">
+        <!-- Sidebar -->
+        <div style="width:120px;background:#e9ecef;border-radius:4px;padding:8px;font-size:9px;color:#6c757d;">
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:4px;font-weight:bold;">CASES</div>
+          <div style="background:#4dabf7;border-radius:3px;padding:4px;margin-bottom:3px;color:white;">warfarin case</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;margin-bottom:3px;">chest pain</div>
+          <div style="background:#dee2e6;border-radius:3px;padding:4px;">paracetamol</div>
+        </div>
+        <!-- Main -->
+        <div style="flex:1;display:flex;gap:8px;">
+          <!-- Dimension rows (left side) -->
+          <div style="flex:1;display:flex;flex-direction:column;gap:5px;">
+            <div style="background:#d3f9d8;border-left:3px solid #2f9e44;border-radius:4px;padding:5px 8px;font-size:9px;color:#2b8a3e;">Monitoring · T2 · 45%</div>
+            <div style="background:#e7f5ff;border-left:3px solid #4dabf7;border-radius:4px;padding:5px 8px;font-size:9px;color:#1971c2;">Dosing · T4 · 80%</div>
+            <div style="background:#fff3bf;border-left:3px solid #f08c00;border-radius:4px;padding:5px 8px;font-size:9px;color:#e67700;">Drug-interaction · T1 · 88%</div>
+            <div style="background:#d3f9d8;border-left:3px solid #2f9e44;border-radius:4px;padding:5px 8px;font-size:9px;color:#2b8a3e;">Completeness · T1 · 75%</div>
+          </div>
+          <!-- Radar panel (right side) -->
+          <div style="width:90px;background:#e7f5ff;border:1.5px solid #74c0fc;border-radius:6px;padding:6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <div style="font-size:8px;font-weight:bold;color:#1971c2;margin-bottom:4px;">PROFILE</div>
+            <svg width="65" height="65" viewBox="0 0 60 60">
+              <polygon points="30,5 55,20 50,50 10,50 5,20" fill="none" stroke="#dee2e6" stroke-width="1"/>
+              <polygon points="30,12 48,24 44,46 16,46 12,24" fill="none" stroke="#dee2e6" stroke-width="0.5"/>
+              <polygon points="30,8 52,22 47,48 13,48 8,22" fill="#4dabf7" fill-opacity="0.3" stroke="#4dabf7" stroke-width="1.5"/>
+              <circle cx="30" cy="8" r="2" fill="#4dabf7"/>
+              <circle cx="52" cy="22" r="2" fill="#2f9e44"/>
+              <circle cx="47" cy="48" r="2" fill="#2f9e44"/>
+              <circle cx="13" cy="48" r="2" fill="#f08c00"/>
+              <circle cx="8" cy="22" r="2" fill="#e03131"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Side panel next to rows</h3>
+      <p>Radar floats beside the dimension rows. Both visible at once — rows on left, pattern on right. Best for wide screens.</p>
+    </div>
+  </div>
+
+</div>

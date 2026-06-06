@@ -1,0 +1,14 @@
+{
+  "source_id": "sr_metformin_renal",
+  "title": "Metformin and renal function: systematic review of safety thresholds",
+  "tier": "systematic_review",
+  "text": "Metformin use at reduced or contraindicated renal function is associated with increased risk of lactic acidosis; eGFR-based thresholds reduce that risk.",
+  "url": "https://example.org/evidence/sr_metformin_renal",
+  "topics": [
+    "metformin",
+    "renal",
+    "egfr",
+    "lactic acidosis",
+    "contraindication"
+  ]
+}

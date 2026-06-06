@@ -1,0 +1,14 @@
+{
+  "source_id": "exp_peds_dosing_opinion",
+  "title": "Expert opinion: communicating pediatric dosing to caregivers",
+  "tier": "expert",
+  "text": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+  "url": "https://example.org/evidence/exp_peds_dosing_opinion",
+  "topics": [
+    "pediatric",
+    "dosing",
+    "caregiver",
+    "instructions",
+    "communication"
+  ]
+}

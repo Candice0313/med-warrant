@@ -1,0 +1,14 @@
+{
+  "source_id": "sr_paracetamol_peds_safety",
+  "title": "Weight-based paracetamol dosing in children: systematic review",
+  "tier": "systematic_review",
+  "text": "Weight-based dosing of paracetamol in children is associated with fewer dosing errors than age-based dosing; exceeding recommended daily limits is the main driver of hepatotoxicity.",
+  "url": "https://example.org/evidence/sr_paracetamol_peds_safety",
+  "topics": [
+    "paracetamol",
+    "acetaminophen",
+    "pediatric",
+    "dosing",
+    "fever"
+  ]
+}

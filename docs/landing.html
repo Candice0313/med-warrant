@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Med-Warrant: Evidence-Grounded LLM Confidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #2f9e44;
+      --amber:  #f08c00;
+      --red:    #e03131;
+      --blue:   #1971c2;
+      --indigo: #4263eb;
+      --gray-50:  #f8f9fa;
+      --gray-100: #f1f3f5;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #868e96;
+      --gray-500: #6c757d;
+      --gray-600: #495057;
+      --gray-700: #343a40;
+      --gray-900: #212529;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Public Sans', sans-serif;
+      color: var(--gray-700);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 56px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav-logo {
+      font-size: 15px; font-weight: 700; color: var(--gray-900);
+      letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--indigo);
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--gray-500);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--gray-900); }
+    .nav-demo {
+      font-size: 13px; font-weight: 600;
+      padding: 6px 16px; border-radius: 8px;
+      background: var(--gray-900); color: #fff;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .nav-demo:hover { background: #000; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #fff9db; border-bottom: 1px solid #ffe066;
+      padding: 9px 48px; font-size: 12px; color: #7d5a00;
+      text-align: center;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 760px; margin: 0 auto;
+      padding: 96px 48px 80px;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 600; color: var(--indigo);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--gray-900);
+      margin-bottom: 28px;
+    }
+    .hero-lead {
+      font-size: 18px; color: var(--gray-600);
+      line-height: 1.75; margin-bottom: 40px;
+      max-width: 640px;
+    }
+    .hero-lead strong { color: var(--gray-900); font-weight: 600; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 24px;
+      background: var(--indigo); color: #fff;
+      font-size: 14px; font-weight: 600; border-radius: 10px;
+      text-decoration: none; transition: all 0.15s;
+      box-shadow: 0 4px 14px rgba(66,99,235,0.3);
+    }
+    .hero-cta:hover { background: #364fc7; transform: translateY(-1px); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      max-width: 760px; margin: 0 auto;
+      border: none; border-top: 1px solid var(--gray-200);
+    }
+
+    /* ── PROSE SECTIONS ── */
+    .prose {
+      max-width: 760px; margin: 0 auto;
+      padding: 64px 48px;
+    }
+    .prose-label {
+      font-size: 11px; font-weight: 700; color: var(--gray-400);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .prose h2 {
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--gray-900); margin-bottom: 20px;
+    }
+    .prose p {
+      font-size: 16px; color: var(--gray-600);
+      line-height: 1.8; margin-bottom: 20px;
+    }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--gray-800); font-weight: 600; }
+    .prose em { font-style: italic; color: var(--gray-700); }
+
+    blockquote {
+      margin: 32px 0;
+      padding: 20px 28px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+    }
+    blockquote p {
+      font-size: 17px; font-weight: 500;
+      color: var(--gray-800); font-style: italic;
+      margin: 0;
+    }
+
+    /* ── DEMO MOCKUP ── */
+    .demo-wrap {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 48px 64px;
+    }
+    .demo-caption {
+      font-size: 12px; color: var(--gray-400);
+      margin-bottom: 16px; font-style: italic;
+    }
+    .demo-box {
+      border: 1.5px solid var(--gray-200); border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+    }
+    .demo-titlebar {
+      background: var(--gray-100); padding: 10px 18px;
+      display: flex; align-items: center; gap: 7px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+    .demo-url-bar {
+      flex: 1; background: #fff; border-radius: 5px;
+      padding: 3px 12px; font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gray-400); border: 1px solid var(--gray-200);
+    }
+    .demo-body { background: #fff; padding: 24px; }
+
+    .mock-row {
+      border: 1.5px solid var(--gray-200); border-radius: 10px;
+      overflow: hidden; margin-bottom: 10px;
+    }
+    .mock-row-head {
+      display: flex; align-items: center; gap: 7px;
+      padding: 11px 14px; flex-wrap: wrap;
+    }
+    .row-title { font-weight: 700; font-size: 13px; flex: 1; color: var(--gray-900); }
+    .tag {
+      font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 5px;
+      white-space: nowrap;
+    }
+    .tag-safety { background: #e03131; color: #fff; }
+    .tag-danger { background: #e03131; color: #fff; }
+    .tag-warn   { background: #f08c00; color: #fff; }
+    .tag-tier   { background: var(--gray-100); color: var(--gray-500); font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    .tag-tier-red { background: #ffe3e3; color: #c92a2a; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    .pct { font-size: 13px; font-weight: 800; }
+    .pct-green { color: var(--green); }
+    .pct-amber { color: var(--amber); }
+    .pct-red   { color: var(--red); }
+
+    .bar-wrap { padding: 0 14px 12px; }
+    .bar-track {
+      height: 7px; border-radius: 99px; background: var(--gray-200);
+      position: relative; overflow: visible;
+    }
+    .bar-model { position: absolute; top:0; left:0; height:100%; border-radius:99px; opacity:0.25; }
+    .bar-solid  { position: absolute; top:0; left:0; height:100%; border-radius:99px; }
+    .bar-tick   { position: absolute; top:-3px; bottom:-3px; width:2px; background:var(--gray-400); border-radius:99px; }
+    .bg-green { background: #2f9e44; }
+    .bg-amber { background: #f08c00; }
+    .bg-red   { background: #e03131; }
+
+    .explore-sel {
+      display: block; margin: 0 14px 10px;
+      font-size: 11px; padding: 3px 8px; border-radius: 6px;
+      border: 1.5px solid #e03131; background: #fff5f5;
+      color: #c92a2a; font-weight: 600; width: calc(100% - 28px);
+    }
+
+    /* ── TIER TABLE ── */
+    .tier-table-wrap {
+      max-width: 760px; margin: 0 auto;
+      padding: 0 48px 64px;
+    }
+    .tier-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      border: 1.5px solid var(--gray-200); border-radius: 12px;
+      overflow: hidden; font-size: 14px;
+    }
+    .tier-table th {
+      background: var(--gray-50); padding: 10px 16px;
+      font-size: 11px; font-weight: 700; color: var(--gray-400);
+      text-transform: uppercase; letter-spacing: 0.06em; text-align: left;
+    }
+    .tier-table td { padding: 13px 16px; border-top: 1px solid var(--gray-200); color: var(--gray-600); }
+    .tier-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: 5px; display: inline-block;
+    }
+    .tb-1,.tb-2 { background:#d3f9d8; color:#2b8a3e; }
+    .tb-3,.tb-4 { background:#e7f5ff; color:#1971c2; }
+    .tb-5       { background:#fff3bf; color:#e67700; }
+    .tb-6       { background:#ffe3e3; color:#c92a2a; }
+    .bar-mini { display:inline-block; height:6px; border-radius:99px; vertical-align:middle; }
+
+    /* ── PRINCIPLES ── */
+    .principles {
+      background: var(--gray-50);
+    }
+    .principles-inner {
+      max-width: 760px; margin: 0 auto;
+      padding: 64px 48px;
+    }
+    .principle-list { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .principle {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .principle-num {
+      flex-shrink: 0; width: 28px; height: 28px;
+      border-radius: 50%; background: var(--gray-200);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--gray-500);
+      margin-top: 2px;
+    }
+    .principle h4 { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+    .principle p  { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+
+    /* ── QUICK START ── */
+    .quickstart { background: var(--gray-900); }
+    .quickstart-inner {
+      max-width: 760px; margin: 0 auto;
+      padding: 64px 48px;
+    }
+    .quickstart-inner .prose-label { color: #74c0fc; }
+    .quickstart-inner h2 { color: #fff; font-size: 28px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.015em; }
+    .quickstart-inner > p { font-size: 15px; color: #868e96; margin-bottom: 28px; }
+    .code-block {
+      background: #1a1b26; border-radius: 12px; padding: 24px 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .code-block pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; line-height: 1.9;
+      white-space: pre; overflow-x: auto;
+    }
+    .c-comment { color: #565f89; }
+    .c-cmd     { color: #9ece6a; }
+    .c-url     { color: #7aa2f7; }
+    .c-out     { color: #565f89; font-style: italic; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gray-200);
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px;
+    }
+    footer p, footer a { font-size: 13px; color: var(--gray-400); text-decoration: none; }
+    footer a:hover { color: var(--gray-700); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero, .prose, .demo-wrap, .tier-table-wrap, .principles-inner, .quickstart-inner { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="disclaimer">
+  Demo system. All cases, answers, and evidence are synthetic. Not for clinical use.
+</div>
+
+<nav>
+  <div class="nav-logo"><div class="nav-dot"></div> Med-Warrant</div>
+  <div class="nav-links">
+    <a href="#problem">The Problem</a>
+    <a href="#thesis">Design Thesis</a>
+    <a href="#demo">Demo</a>
+    <a href="#tiers">Evidence Tiers</a>
+    <a href="#literature">Literature</a>
+    <a href="#hitl">Human-in-the-Loop</a>
+  </div>
+  <a href="http://localhost:5173" class="nav-demo">Open demo →</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <h1>When AI judges medical AI, what does a verdict actually mean?</h1>
+  <p class="hero-lead">
+    LLM-as-Judge is becoming the standard for evaluating medical answers at scale.
+    This system asks: when the judge says it's <strong>88% confident</strong> an answer is safe,
+    but has <strong>no evidence behind it</strong>, should that verdict be trusted?
+  </p>
+  <a href="http://localhost:5173" class="hero-cta">
+    Open the demo system
+    <span>→</span>
+  </a>
+</div>
+
+<!-- LITERATURE -->
+<div class="prose" id="literature">
+  <div class="prose-label">Literature</div>
+  <h2>What the research actually says</h2>
+  <p>
+    These are the papers and findings that shaped the design decisions in this system.
+  </p>
+</div>
+
+<div style="max-width:860px;margin:0 auto;padding:0 48px 72px">
+
+  <!-- cluster 1 -->
+  <div style="margin-bottom:48px">
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px">
+      LLM overconfidence in medicine
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          The Illusion of Readiness
+          <span style="font-weight:400;color:var(--gray-400);margin-left:8px">arxiv 2509.18234 · Microsoft Research, Eric Horvitz, Eric Topol et al.</span>
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Six stress tests across six flagship models (GPT-5, Gemini 2.5 Pro, o3, o4-mini, GPT-4o, DeepSeek-VL2).
+          The most striking result: swap the image that supports the wrong answer while keeping the text identical,
+          and GPT-5 drops from 83.3% to 51.7% (−31.6pp): the model was matching image-answer pairs from training, not reasoning about the image.
+          Separately, CoT prompting <em>decreased</em> accuracy on several benchmarks, with models constructing
+          confident-sounding chains of reasoning for hallucinated conclusions.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> Direct basis for evidence capping. If a model can be 83% confident on something it's essentially guessing, self-reported confidence cannot be the output signal. The complexity metadata tags (reasoning × visual dependency) come from this paper's clinician rubric framing.</span>
+        </div>
+      </div>
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          LLM overconfidence on mARC-QA
+          <span style="font-weight:400;color:var(--gray-400);margin-left:8px">Scientific Reports, Nov 2025</span>
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Models including o1, Gemini, Claude, and DeepSeek perform significantly below physicians on clinical reasoning tasks,
+          while expressing high confidence. Uncertainty analysis confirms systematic overconfidence despite limited accuracy.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> Empirical justification for the core rule: model confidence must be capped by external evidence, not taken at face value.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- cluster 2 -->
+  <div style="margin-bottom:48px">
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px">
+      Evaluation frameworks
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          HealthBench
+          <span style="font-weight:400;color:var(--gray-400);margin-left:8px">OpenAI, May 2025 · 262 physicians, 60 countries, 48,562 rubric criteria</span>
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Evaluates along five axes: accuracy, completeness, context-sensitivity, communication quality,
+          and instruction-following. Each criterion is written by a physician and weighted separately.
+          No single aggregate score is reported as the headline output.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> Proof of concept that dimension-level evaluation at scale is viable. The dimension structure here (dosing accuracy, drug-interaction safety, etc.) is a direct analogue.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- cluster 3 -->
+  <div style="margin-bottom:48px">
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px">
+      Known failure modes of LLM judges
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          Completeness detection is near-random
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          LLM judges cannot reliably identify incomplete medical answers; discrimination is near chance (~50%).
+          Even when agreement is high, LLM judges and clinicians disagree fundamentally on <em>why</em> an answer
+          is incomplete. False positives come mainly from over-flagging clinically unnecessary gaps.
+          <em>"Aggregate agreement masks deep disagreement in rationale."</em>
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> The "Completeness of warnings" dimension is deliberately shown at low confidence with a human-review flag, acknowledging this known blind spot rather than pretending the judge handles it reliably.</span>
+        </div>
+      </div>
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          Demographic bias and geographic generalization both fail silently
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Across ~3,000 responses, all tested LLMs failed to identify any degree of demographic bias;
+          they generate biased outputs and cannot detect bias when it is presented to them.
+          Separately, J-HealthBench (Hisada et al., arxiv 2509.17444, Sep 2025) found ~17% of benchmark
+          items needed modification for Japan due to local clinical guidelines, insurance schemes, and social norms.
+          A "globally valid judge" is itself questionable.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> This system makes no attempt to evaluate fairness or demographic equity, and does not claim to generalize across healthcare systems. The evidence library and rubrics are synthetic and English-language. Both are deliberate scope boundaries, not oversights.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- cluster 4 -->
+  <div style="margin-bottom:0">
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px">
+      Agent-as-judge and grounding
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          Agent-as-a-Judge
+          <span style="font-weight:400;color:var(--gray-400);margin-left:8px">ICML 2025, arxiv 2410.10934</span>
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Replaces a single-pass LLM judge with planning, tool-augmented verification, and multi-agent collaboration.
+          Key difference: evaluates the <em>process</em>, not just the output. It decomposes tasks into sub-tasks
+          and verifies each step. The gain in human agreement comes from grounded verification, not bigger models.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> The evidence grounding step (each verdict must cite a retrieved source) is this system's implementation of that idea. The inspectable snippets make the verification chain visible to the human reviewer.</span>
+        </div>
+      </div>
+
+      <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:24px;background:#fff">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:4px">
+          Field consensus: LLM judge as assistant, not authority
+          <span style="font-weight:400;color:var(--gray-400);margin-left:8px">"Artificial Authority" · Bioengineering, Jan 2026</span>
+        </div>
+        <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin:10px 0">
+          Across the literature, the consistent position is that LLM judges should assist human reviewers,
+          not replace them. Safe deployment depends on strict human oversight and governance structures,
+          especially for safety-critical verdicts.
+        </p>
+        <div style="font-size:12px;padding:10px 14px;background:#f7f8ff;border-radius:8px;border:1px solid #c7d2fe">
+          <strong style="color:var(--indigo)">→ In this demo:</strong>
+          <span style="color:var(--gray-600)"> The Review Queue exists because of this. Escalated verdicts don't just get flagged; they go to a human who can Approve or Override with a note. The system is designed to surface decisions, not make them.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<hr class="divider" />
+
+<!-- THE PROBLEM -->
+<div class="prose" id="problem">
+  <h2>LLMs are confidently uncertain</h2>
+  <p>
+    Language models report confidence scores, but those scores come from
+    statistical patterns in training data, not from evidence retrieved
+    for this specific question. A model saying "I'm 88% sure" about a
+    drug interaction is making a very different claim than a systematic
+    review that studied 10,000 patients.
+  </p>
+  <p>
+    In most LLM evaluation pipelines, the model's self-reported confidence
+    is treated as a reliable signal. I think that's a mistake, especially
+    in high-stakes domains like medicine. <strong>Confidence without a cited basis
+    is just noise dressed up as a number.</strong>
+  </p>
+  <p>
+    The question I wanted to answer wasn't <em>"is the AI right or wrong?"</em>
+    It was: <em>"what is this confidence actually grounded in, and does the
+    strength of that grounding match how confident the model sounds?"</em>
+  </p>
+</div>
+
+<hr class="divider" />
+
+<!-- THESIS -->
+<div class="prose" id="thesis">
+  <h2>Evidence sets a ceiling. It doesn't inflate.</h2>
+  <p>
+    The core rule in this system is simple: a verdict's displayed confidence
+    is the model's confidence <strong>clamped down</strong> by the strength of
+    evidence it grounded to. Evidence can only lower the number. It cannot raise it.
+  </p>
+
+  <blockquote>
+    <p>If the model says 88%, but the best evidence it found was an expert opinion
+    (ceiling: 60%), the displayed confidence is 60%, not 88%.</p>
+  </blockquote>
+
+  <p>
+    There's a second rule for safety-critical claims specifically: if a verdict
+    involves a safety recommendation and the only "evidence" is the model's own
+    prior (no retrieved literature at all), the system flags it as
+    <strong>UNVERIFIED SAFETY</strong> and routes it to a human reviewer.
+    No exceptions. The model can sound maximally confident; it doesn't matter.
+  </p>
+  <p>
+    These two rules are the entire thesis. Everything else in the system is
+    infrastructure to support them.
+  </p>
+</div>
+
+<hr class="divider" />
+
+<!-- WHAT I DELIBERATELY DIDN'T BUILD -->
+<div class="prose">
+  <h2>No aggregate score. On purpose.</h2>
+  <p>
+    The most natural thing to do in an evaluation system is to average the
+    dimension scores into a single number. I didn't do that, and I think it
+    would have broken the whole point.
+  </p>
+  <p>
+    If a case has three trustworthy verdicts and one safety escalation,
+    an average might read "82%, looks fine." But that safety escalation
+    is exactly the thing a reviewer needs to see. Averaging collapses the
+    signal you actually care about.
+  </p>
+
+  <blockquote>
+    <p>The suppressed average is shown in the UI (struck through) as an
+    explicit reminder that it exists but shouldn't be the headline.</p>
+  </blockquote>
+
+  <p>
+    The same logic applies to the radar chart in the Profile tab. It shows
+    each dimension separately. There's no "overall shape" to optimize for.
+    The amber dot on a low-confidence axis is the point, not noise to average away.
+  </p>
+</div>
+
+<hr class="divider" />
+
+<!-- EXPLORE MODE -->
+<div class="prose">
+  <h2>Explore Mode: evidence as a variable</h2>
+  <p>
+    The most interesting part of this system isn't the evaluation itself;
+    it's the Explore Mode. You can change the evidence tier on any verdict
+    and watch the confidence and escalation status update in real time,
+    with no API calls.
+  </p>
+  <p>
+    The demo case I show is this: the drug-interaction safety verdict for
+    warfarin + ibuprofen is grounded to a systematic review. It shows 88%,
+    no escalation, correctly trusted. Now change the tier to "model prior."
+    The row flips red. Confidence drops to 40%. UNVERIFIED SAFETY appears.
+  </p>
+  <p>
+    That single interaction communicates the thesis better than any explanation could.
+    <strong>The number isn't a property of the model's answer. It's a function of the
+    evidence behind it.</strong>
+  </p>
+</div>
+
+<!-- DEMO MOCKUP -->
+<div class="demo-wrap" id="demo">
+  <p class="demo-caption">Explore Mode: drug-interaction safety tier changed from T1 (systematic review) to T6 (model prior)</p>
+  <div class="demo-box">
+    <div class="demo-titlebar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="demo-url-bar">localhost:5173 · warfarin case · Explore ON</div>
+    </div>
+    <div class="demo-body">
+
+      <!-- monitoring: warning -->
+      <div class="mock-row" style="border-left:4px solid #f08c00;background:#fffbf0">
+        <div class="mock-row-head">
+          <span class="row-title">Monitoring &amp; follow-up</span>
+          <span class="tag tag-warn">↓ LOW CONFIDENCE</span>
+          <span class="tag tag-tier">T2</span>
+          <span class="pct pct-amber">45%</span>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-track">
+            <div class="bar-model bg-amber" style="width:45%"></div>
+            <div class="bar-solid bg-amber" style="width:45%"></div>
+            <div class="bar-tick" style="left:90%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- dosing: green -->
+      <div class="mock-row" style="border-left:4px solid #2f9e44;background:#f6fef8">
+        <div class="mock-row-head">
+          <span class="row-title">Dosing accuracy</span>
+          <span class="tag tag-tier">T4</span>
+          <span class="pct pct-green">80%</span>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-track">
+            <div class="bar-model bg-green" style="width:83%"></div>
+            <div class="bar-solid bg-green" style="width:80%"></div>
+            <div class="bar-tick" style="left:80%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- drug: RED, explore changed -->
+      <div class="mock-row" style="border-left:4px solid #e03131;background:#fff5f5">
+        <div class="mock-row-head">
+          <span class="row-title">Drug-interaction safety</span>
+          <span class="tag tag-safety">SAFETY</span>
+          <span class="tag tag-danger">UNVERIFIED SAFETY</span>
+          <span class="tag tag-tier-red">T6</span>
+          <span class="pct pct-red">40%</span>
+        </div>
+        <select class="explore-sel">
+          <option selected>T6: Model prior (ungrounded)</option>
+          <option>T1: Systematic review / meta-analysis</option>
+        </select>
+        <div class="bar-wrap">
+          <div class="bar-track">
+            <div class="bar-model bg-red" style="width:88%"></div>
+            <div class="bar-solid bg-red" style="width:40%"></div>
+            <div class="bar-tick" style="left:40%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- completeness: green -->
+      <div class="mock-row" style="border-left:4px solid #2f9e44;background:#f6fef8">
+        <div class="mock-row-head">
+          <span class="row-title">Completeness of warnings</span>
+          <span class="tag tag-tier">T1</span>
+          <span class="pct pct-green">75%</span>
+        </div>
+        <div class="bar-wrap">
+          <div class="bar-track">
+            <div class="bar-model bg-green" style="width:75%"></div>
+            <div class="bar-solid bg-green" style="width:75%"></div>
+            <div class="bar-tick" style="left:95%"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- EVIDENCE TIERS -->
+<div class="prose" id="tiers">
+  <h2>Six levels, six ceilings</h2>
+
+  <p>
+    The confidence ceilings are based on the <strong>Evidence-Based Medicine (EBM)</strong> evidence hierarchy:
+    a framework developed in the 1990s to help clinicians weigh the reliability of different types of medical research.
+    The core idea is simple: not all evidence is created equal. A single expert's opinion is less reliable than a
+    randomized trial; a randomized trial is less reliable than a pooled meta-analysis of dozens of them.
+    EBM formalizes this intuition into a ranked ladder.
+  </p>
+
+  <div style="margin:28px 0;padding:20px 24px;background:var(--gray-50);border-radius:12px;border:1.5px solid var(--gray-200)">
+    <div style="font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px">The EBM hierarchy, from strongest to weakest</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#d3f9d8;color:#2b8a3e;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T1</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Systematic reviews &amp; meta-analyses</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">Pool results from many studies, reducing the noise of any single trial</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#d3f9d8;color:#2b8a3e;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T2</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Randomized controlled trials (RCTs)</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">Randomly assign patients to treatment vs. control; the gold standard for causation</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#e7f5ff;color:#1971c2;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T3</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Cohort &amp; observational studies</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">Follow patients over time without randomization; can show association, harder to show causation</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#e7f5ff;color:#1971c2;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T4</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Clinical guidelines &amp; consensus</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">Expert panels synthesize the literature into recommendations; authoritative but one step removed from primary data</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#fff3bf;color:#e67700;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T5</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Expert opinion &amp; case reports</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">Individual clinical experience or isolated cases; valuable but highly susceptible to bias</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;background:#ffe3e3;color:#c92a2a;padding:2px 7px;border-radius:5px;flex-shrink:0;margin-top:2px">T6</span>
+        <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Model prior</span>
+          <span style="font-size:13px;color:var(--gray-500);margin-left:8px">No retrieved literature; the model draws entirely on patterns from training data, with no external anchor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    The confidence ceilings in this system map directly onto this hierarchy.
+    The numbers are deliberately conservative: a clinical guideline caps at 80%,
+    not 95%, because guidelines encode consensus rather than direct trial evidence.
+    Model prior caps at 40%: enough to surface a result, not enough to trust it.
+  </p>
+</div>
+
+<div class="tier-table-wrap">
+  <table class="tier-table">
+    <thead>
+      <tr>
+        <th>Tier</th>
+        <th>Evidence Type</th>
+        <th>Confidence Ceiling</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tier-badge tb-1">T1</span></td>
+        <td>Systematic review / meta-analysis</td>
+        <td><span class="bar-mini bg-green" style="width:76px"></span> &nbsp;<strong style="color:var(--green)">95%</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tb-2">T2</span></td>
+        <td>Randomized controlled trial (RCT)</td>
+        <td><span class="bar-mini bg-green" style="width:72px"></span> &nbsp;<strong style="color:var(--green)">90%</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tb-4">T4</span></td>
+        <td>Clinical guideline / consensus</td>
+        <td><span class="bar-mini" style="width:64px;background:#4dabf7;display:inline-block;height:6px;border-radius:99px;vertical-align:middle"></span> &nbsp;<strong style="color:var(--blue)">80%</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tb-3">T3</span></td>
+        <td>Cohort / observational study</td>
+        <td><span class="bar-mini" style="width:60px;background:#4dabf7;display:inline-block;height:6px;border-radius:99px;vertical-align:middle"></span> &nbsp;<strong style="color:var(--blue)">75%</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tb-5">T5</span></td>
+        <td>Expert opinion / case report</td>
+        <td><span class="bar-mini" style="width:48px;background:#f08c00;display:inline-block;height:6px;border-radius:99px;vertical-align:middle"></span> &nbsp;<strong style="color:var(--amber)">60%</strong></td>
+      </tr>
+      <tr>
+        <td><span class="tier-badge tb-6">T6</span></td>
+        <td>Model prior (no retrieved evidence)</td>
+        <td><span class="bar-mini bg-red" style="width:32px;display:inline-block;height:6px;border-radius:99px;vertical-align:middle"></span> &nbsp;<strong style="color:var(--red)">40%</strong> &nbsp;<span style="font-size:11px;color:var(--red)">→ safety claims escalate</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider" />
+
+
+
+<!-- HUMAN IN THE LOOP -->
+<div class="prose" id="hitl">
+  <h2>Automation handles the easy cases. Humans handle the rest.</h2>
+  <p>
+    The system doesn't send everything to a human reviewer. That would be expensive and defeat the point
+    of automation. But it also doesn't trust the model unconditionally; that would be dangerous.
+    The design sits in between: <strong>two deterministic rules decide when a verdict needs a human,
+    and everything else clears automatically.</strong>
+  </p>
+</div>
+
+<div style="max-width:860px;margin:0 auto;padding:0 48px 0">
+
+  <!-- escalation rules -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px">
+    <div style="border:1.5px solid #ffc9c9;border-radius:14px;padding:24px;background:#fff9f9">
+      <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Escalation Rule 1: DANGER</div>
+      <div style="font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:8px">Safety claim + no evidence</div>
+      <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:12px">
+        If a verdict is marked <code style="font-size:11px;background:var(--gray-100);padding:1px 5px;border-radius:4px">safety_critical</code> and the best evidence found is T6 (model prior),
+        the verdict is flagged as <strong>UNVERIFIED SAFETY</strong> and blocked from auto-approval.
+      </p>
+      <p style="font-size:12px;color:var(--red);font-weight:600">
+        Rationale: a safety recommendation with no external backing is exactly the failure mode that causes patient harm. The model's confidence is irrelevant.
+      </p>
+    </div>
+    <div style="border:1.5px solid #ffe8cc;border-radius:14px;padding:24px;background:#fffbf5">
+      <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px">Escalation Rule 2: WARNING</div>
+      <div style="font-size:15px;font-weight:700;color:var(--gray-900);margin-bottom:8px">Displayed confidence below 50%</div>
+      <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin-bottom:12px">
+        If the capped confidence is below 0.50 (whether because the evidence is weak or the model itself was uncertain),
+        the verdict is flagged as <strong>LOW CONFIDENCE</strong> and queued for review.
+      </p>
+      <p style="font-size:12px;color:var(--amber);font-weight:600">
+        Rationale: below 50%, the verdict is essentially a coin flip. Passing it to the user without review is misleading.
+      </p>
+    </div>
+  </div>
+
+  <!-- cost control logic -->
+  <div style="border:1.5px solid var(--gray-200);border-radius:14px;padding:28px;background:#fff;margin-bottom:40px">
+    <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:16px">Why two rules, not a model</div>
+    <p style="font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:16px">
+      The escalation rules are deterministic: not a trained classifier, not a probability threshold tuned on a dataset.
+      This is intentional for two reasons.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Auditability.</span>
+          <span style="font-size:14px;color:var(--gray-600)"> A reviewer can always see exactly why something was escalated: <em>unverified_safety_claim</em> or <em>low_confidence</em>. There's no black-box score to argue with.</span>
+        </div>
+      </div>
+      <div>
+          <span style="font-size:14px;font-weight:600;color:var(--gray-900)">Asymmetric cost.</span>
+          <span style="font-size:14px;color:var(--gray-600)"> The cost of a missed safety escalation (patient harm) is orders of magnitude higher than the cost of an unnecessary review (a few minutes of a clinician's time). The rules are calibrated to err on the side of escalation.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- review queue flow -->
+  <div style="border:1.5px solid var(--gray-200);border-radius:14px;overflow:hidden;margin-bottom:64px;max-width:560px;margin-left:auto;margin-right:auto">
+    <div style="background:var(--gray-50);padding:14px 24px;border-bottom:1px solid var(--gray-200);font-size:13px;font-weight:700;color:var(--gray-700);display:flex;align-items:center;gap:10px">
+      Review Queue flow
+      <span style="font-size:11px;font-weight:500;color:var(--gray-400);font-style:italic">what happens after a verdict escalates</span>
+    </div>
+    <div style="padding:24px;display:flex;flex-direction:column;gap:0">
+
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</div>
+          <div style="width:2px;flex:1;background:var(--gray-200);margin:4px 0"></div>
+        </div>
+        <div style="padding-bottom:20px">
+          <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:4px">Verdict escalates during evaluation</div>
+          <p style="font-size:13px;color:var(--gray-500);line-height:1.6">Either rule fires → verdict tagged with reason + severity → saved to queue. The nav badge increments. The scorecard shows the escalation pill inline.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--indigo);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</div>
+          <div style="width:2px;flex:1;background:var(--gray-200);margin:4px 0"></div>
+        </div>
+        <div style="padding-bottom:20px">
+          <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:4px">Reviewer opens the queue</div>
+          <p style="font-size:13px;color:var(--gray-500);line-height:1.6">Each card shows the case, dimension, escalation reason, model reasoning, and the inspectable evidence snippets that grounded (or failed to ground) the verdict.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:0;align-items:stretch">
+        <div style="display:flex;flex-direction:column;align-items:center;margin-right:16px">
+          <div style="width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</div>
+          <div style="width:2px;flex:1;background:transparent;margin:4px 0"></div>
+        </div>
+        <div style="padding-bottom:0">
+          <div style="font-size:14px;font-weight:600;color:var(--gray-900);margin-bottom:4px">Approve or Override</div>
+          <p style="font-size:13px;color:var(--gray-500);line-height:1.6">
+            <strong style="color:var(--green)">Approve</strong>: the model's verdict is confirmed. Card leaves the queue.<br/>
+            <strong style="color:var(--red)">Override</strong>: reviewer adds a note explaining the correction. Both the note and the override reason are stored alongside the original verdict.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>Med-Warrant: Evidence-Grounded LLM Evaluation Demo</p>
+  <p>All cases and evidence are synthetic. Not for clinical use.</p>
+  <a href="http://localhost:5173">Open demo system →</a>
+</footer>
+
+</body>
+</html>

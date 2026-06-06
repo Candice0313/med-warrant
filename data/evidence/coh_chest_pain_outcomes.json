@@ -1,0 +1,14 @@
+{
+  "source_id": "coh_chest_pain_outcomes",
+  "title": "Cohort of outcomes after chest-pain presentations",
+  "tier": "cohort",
+  "text": "Delayed presentation in chest pain with cardiac features was associated with worse outcomes, supporting urgent assessment.",
+  "url": "https://example.org/evidence/coh_chest_pain_outcomes",
+  "topics": [
+    "chest pain",
+    "outcomes",
+    "acs",
+    "urgent",
+    "triage"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "source_id": "coh_inr_followup",
+  "title": "Cohort: INR follow-up adherence and bleeding",
+  "tier": "cohort",
+  "text": "Patients with consistent INR follow-up after medication changes had fewer out-of-range readings.",
+  "url": "https://example.org/evidence/coh_inr_followup",
+  "topics": [
+    "inr",
+    "monitoring",
+    "follow-up",
+    "warfarin"
+  ]
+}

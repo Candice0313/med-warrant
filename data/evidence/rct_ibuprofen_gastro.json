@@ -1,0 +1,13 @@
+{
+  "source_id": "rct_ibuprofen_gastro",
+  "title": "Randomized trial of short-course ibuprofen and gastrointestinal events",
+  "tier": "rct",
+  "text": "In a randomized trial, short-course ibuprofen increased minor gastrointestinal events versus placebo; risk was higher in patients with bleeding risk factors.",
+  "url": "https://example.org/evidence/rct_ibuprofen_gastro",
+  "topics": [
+    "ibuprofen",
+    "nsaid",
+    "gastrointestinal",
+    "bleeding"
+  ]
+}

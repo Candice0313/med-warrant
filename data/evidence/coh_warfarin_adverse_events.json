@@ -1,0 +1,15 @@
+{
+  "source_id": "coh_warfarin_adverse_events",
+  "title": "Cohort of warfarin-related adverse events in primary care",
+  "tier": "cohort",
+  "text": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+  "url": "https://example.org/evidence/coh_warfarin_adverse_events",
+  "topics": [
+    "warfarin",
+    "bleeding",
+    "monitoring",
+    "inr",
+    "follow-up",
+    "interaction"
+  ]
+}

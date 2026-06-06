@@ -1,0 +1,14 @@
+{
+  "source_id": "gl_chest_pain_redflags",
+  "title": "Chest pain red-flag features",
+  "tier": "guideline",
+  "text": "Red-flag chest pain features include radiation to arm or jaw, sweating, breathlessness, and associated collapse, warranting emergency evaluation.",
+  "url": "https://example.org/evidence/gl_chest_pain_redflags",
+  "topics": [
+    "chest pain",
+    "red flags",
+    "acs",
+    "emergency",
+    "recognition"
+  ]
+}

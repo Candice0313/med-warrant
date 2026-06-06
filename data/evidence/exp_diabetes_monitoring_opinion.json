@@ -1,0 +1,13 @@
+{
+  "source_id": "exp_diabetes_monitoring_opinion",
+  "title": "Expert opinion: individualizing diabetes monitoring",
+  "tier": "expert",
+  "text": "Monitoring frequency in diabetes should be individualized to the patient's risk and circumstances.",
+  "url": "https://example.org/evidence/exp_diabetes_monitoring_opinion",
+  "topics": [
+    "diabetes",
+    "monitoring",
+    "individual",
+    "follow-up"
+  ]
+}

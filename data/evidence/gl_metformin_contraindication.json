@@ -1,0 +1,14 @@
+{
+  "source_id": "gl_metformin_contraindication",
+  "title": "Metformin prescribing guideline: contraindications",
+  "tier": "guideline",
+  "text": "Metformin is contraindicated or requires dose review below defined renal thresholds and should be withheld during acute illness with dehydration.",
+  "url": "https://example.org/evidence/gl_metformin_contraindication",
+  "topics": [
+    "metformin",
+    "contraindication",
+    "renal",
+    "egfr",
+    "acute illness"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "source_id": "exp_ibuprofen_food_opinion",
+  "title": "Pharmacist commentary: taking ibuprofen with food",
+  "tier": "expert",
+  "text": "Pharmacists commonly advise taking ibuprofen with food to reduce stomach upset, though this does not eliminate bleeding risk.",
+  "url": "https://example.org/evidence/exp_ibuprofen_food_opinion",
+  "topics": [
+    "ibuprofen",
+    "food",
+    "dosing",
+    "stomach"
+  ]
+}

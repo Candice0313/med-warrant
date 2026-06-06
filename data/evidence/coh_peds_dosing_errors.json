@@ -1,0 +1,15 @@
+{
+  "source_id": "coh_peds_dosing_errors",
+  "title": "Cohort study of pediatric medication dosing errors at home",
+  "tier": "cohort",
+  "text": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+  "url": "https://example.org/evidence/coh_peds_dosing_errors",
+  "topics": [
+    "pediatric",
+    "dosing",
+    "errors",
+    "caregiver",
+    "instructions",
+    "paracetamol"
+  ]
+}

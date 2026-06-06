@@ -1,0 +1,13 @@
+{
+  "source_id": "rct_metformin_glycemic",
+  "title": "RCT of metformin for glycemic control in type 2 diabetes",
+  "tier": "rct",
+  "text": "Metformin improved glycemic control versus placebo in adults with type 2 diabetes and adequate renal function.",
+  "url": "https://example.org/evidence/rct_metformin_glycemic",
+  "topics": [
+    "metformin",
+    "diabetes",
+    "glycemic",
+    "type 2"
+  ]
+}

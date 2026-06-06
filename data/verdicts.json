@@ -1,0 +1,680 @@
+{
+  "case_0421:dosing_accuracy": {
+    "verdict_id": "case_0421:dosing_accuracy",
+    "case_id": "case_0421",
+    "dimension": "dosing_accuracy",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.82,
+    "model_reasoning": "The answer correctly states 400 mg up to three times daily, which matches OTC guidance.",
+    "grounded_tier": "guideline",
+    "grounding": [
+      {
+        "source_id": "exp_ibuprofen_food_opinion",
+        "tier": "expert",
+        "snippet": "Pharmacists commonly advise taking ibuprofen with food to reduce stomach upset, though this does not eliminate bleeding risk.",
+        "score": 2.0
+      },
+      {
+        "source_id": "gl_otc_ibuprofen_dosing",
+        "tier": "guideline",
+        "snippet": "Standard over-the-counter adult ibuprofen labeling advises taking with food and not exceeding the stated daily maximum without medical advice.",
+        "score": 2.0
+      },
+      {
+        "source_id": "coh_nsaid_gi_bleed",
+        "tier": "cohort",
+        "snippet": "An observational cohort found higher rates of upper gastrointestinal bleeding among regular NSAID users, especially older adults and those on anticoagulants.",
+        "score": 1.0
+      },
+      {
+        "source_id": "coh_peds_dosing_errors",
+        "tier": "cohort",
+        "snippet": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+        "score": 1.0
+      },
+      {
+        "source_id": "exp_peds_dosing_opinion",
+        "tier": "expert",
+        "snippet": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.8,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0421:drug_interaction_safety": {
+    "verdict_id": "case_0421:drug_interaction_safety",
+    "case_id": "case_0421",
+    "dimension": "drug_interaction_safety",
+    "safety_critical": true,
+    "claim_scope": "population",
+    "model_confidence": 0.88,
+    "model_reasoning": "The answer completely omits the warfarin\u2013NSAID bleeding interaction \u2014 a critical omission.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "gl_warfarin_nsaid_interaction",
+        "tier": "guideline",
+        "snippet": "Guidelines advise avoiding NSAIDs such as ibuprofen in patients on warfarin where possible; if unavoidable, use the lowest dose for the shortest time with gastroprotection and closer INR monitoring.",
+        "score": 5.0
+      },
+      {
+        "source_id": "sr_nsaid_anticoagulant_bleeding",
+        "tier": "systematic_review",
+        "snippet": "Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk of major and gastrointestinal bleeding compared with anticoagulant alone.",
+        "score": 4.0
+      },
+      {
+        "source_id": "coh_nsaid_gi_bleed",
+        "tier": "cohort",
+        "snippet": "An observational cohort found higher rates of upper gastrointestinal bleeding among regular NSAID users, especially older adults and those on anticoagulants.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_warfarin_adverse_events",
+        "tier": "cohort",
+        "snippet": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+        "score": 3.0
+      },
+      {
+        "source_id": "rct_ibuprofen_gastro",
+        "tier": "rct",
+        "snippet": "In a randomized trial, short-course ibuprofen increased minor gastrointestinal events versus placebo; risk was higher in patients with bleeding risk factors.",
+        "score": 3.0
+      }
+    ],
+    "displayed_confidence": 0.88,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0421:completeness_warnings": {
+    "verdict_id": "case_0421:completeness_warnings",
+    "case_id": "case_0421",
+    "dimension": "completeness_warnings",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.75,
+    "model_reasoning": "No mention of anticoagulation risk, INR changes, or alternative analgesics.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "coh_warfarin_adverse_events",
+        "tier": "cohort",
+        "snippet": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+        "score": 2.0
+      },
+      {
+        "source_id": "gl_warfarin_nsaid_interaction",
+        "tier": "guideline",
+        "snippet": "Guidelines advise avoiding NSAIDs such as ibuprofen in patients on warfarin where possible; if unavoidable, use the lowest dose for the shortest time with gastroprotection and closer INR monitoring.",
+        "score": 2.0
+      },
+      {
+        "source_id": "sr_nsaid_anticoagulant_bleeding",
+        "tier": "systematic_review",
+        "snippet": "Pooled analyses show that concurrent NSAID use in patients on oral anticoagulants substantially increases the risk of major and gastrointestinal bleeding compared with anticoagulant alone.",
+        "score": 2.0
+      },
+      {
+        "source_id": "coh_inr_followup",
+        "tier": "cohort",
+        "snippet": "Patients with consistent INR follow-up after medication changes had fewer out-of-range readings.",
+        "score": 1.0
+      },
+      {
+        "source_id": "coh_nsaid_gi_bleed",
+        "tier": "cohort",
+        "snippet": "An observational cohort found higher rates of upper gastrointestinal bleeding among regular NSAID users, especially older adults and those on anticoagulants.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.75,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0421:monitoring_followup": {
+    "verdict_id": "case_0421:monitoring_followup",
+    "case_id": "case_0421",
+    "dimension": "monitoring_followup",
+    "safety_critical": false,
+    "claim_scope": "individual",
+    "model_confidence": 0.45,
+    "model_reasoning": "No INR monitoring or follow-up advice provided for this anticoagulated patient; individual follow-up is complex and this answer gives none.",
+    "grounded_tier": "rct",
+    "grounding": [
+      {
+        "source_id": "coh_inr_followup",
+        "tier": "cohort",
+        "snippet": "Patients with consistent INR follow-up after medication changes had fewer out-of-range readings.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_warfarin_adverse_events",
+        "tier": "cohort",
+        "snippet": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+        "score": 3.0
+      },
+      {
+        "source_id": "rct_warfarin_inr_monitoring",
+        "tier": "rct",
+        "snippet": "More frequent INR monitoring after introducing interacting medications reduced out-of-range values and bleeding events in warfarin-treated patients.",
+        "score": 3.0
+      },
+      {
+        "source_id": "exp_diabetes_monitoring_opinion",
+        "tier": "expert",
+        "snippet": "Monitoring frequency in diabetes should be individualized to the patient's risk and circumstances.",
+        "score": 2.0
+      },
+      {
+        "source_id": "gl_warfarin_nsaid_interaction",
+        "tier": "guideline",
+        "snippet": "Guidelines advise avoiding NSAIDs such as ibuprofen in patients on warfarin where possible; if unavoidable, use the lowest dose for the shortest time with gastroprotection and closer INR monitoring.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.45,
+    "escalation": {
+      "flag": true,
+      "reason": "low_confidence",
+      "severity": "warning"
+    },
+    "human_review": null
+  },
+  "case_0588:triage_urgency": {
+    "verdict_id": "case_0588:triage_urgency",
+    "case_id": "case_0588",
+    "dimension": "triage_urgency",
+    "safety_critical": true,
+    "claim_scope": "population",
+    "model_confidence": 0.95,
+    "model_reasoning": "Answer advises rest and watchful waiting for classic ACS symptoms \u2014 dangerously wrong.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "gl_chest_pain_triage",
+        "tier": "guideline",
+        "snippet": "Acute chest pain with features suggesting cardiac origin should be treated as a medical emergency with immediate assessment; do not advise watchful waiting.",
+        "score": 4.0
+      },
+      {
+        "source_id": "coh_chest_pain_outcomes",
+        "tier": "cohort",
+        "snippet": "Delayed presentation in chest pain with cardiac features was associated with worse outcomes, supporting urgent assessment.",
+        "score": 3.0
+      },
+      {
+        "source_id": "gl_chest_pain_redflags",
+        "tier": "guideline",
+        "snippet": "Red-flag chest pain features include radiation to arm or jaw, sweating, breathlessness, and associated collapse, warranting emergency evaluation.",
+        "score": 3.0
+      },
+      {
+        "source_id": "rct_early_acs_pathway",
+        "tier": "rct",
+        "snippet": "An accelerated assessment pathway for low-risk chest pain safely reduced length of stay without increasing missed events.",
+        "score": 3.0
+      },
+      {
+        "source_id": "sr_troponin_acs",
+        "tier": "systematic_review",
+        "snippet": "High-sensitivity troponin assays have high sensitivity for acute coronary syndrome and support rapid rule-out pathways when combined with clinical assessment.",
+        "score": 3.0
+      }
+    ],
+    "displayed_confidence": 0.95,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0588:red_flag_recognition": {
+    "verdict_id": "case_0588:red_flag_recognition",
+    "case_id": "case_0588",
+    "dimension": "red_flag_recognition",
+    "safety_critical": true,
+    "claim_scope": "population",
+    "model_confidence": 0.92,
+    "model_reasoning": "Radiation to left arm, chest tightness, and recent onset are textbook red flags, unacknowledged.",
+    "grounded_tier": "rct",
+    "grounding": [
+      {
+        "source_id": "gl_chest_pain_redflags",
+        "tier": "guideline",
+        "snippet": "Red-flag chest pain features include radiation to arm or jaw, sweating, breathlessness, and associated collapse, warranting emergency evaluation.",
+        "score": 4.0
+      },
+      {
+        "source_id": "exp_chest_pain_casereport",
+        "tier": "expert",
+        "snippet": "A case report describes an atypical chest-pain presentation initially mistaken for indigestion, underscoring caution against reassurance without assessment.",
+        "score": 3.0
+      },
+      {
+        "source_id": "gl_chest_pain_triage",
+        "tier": "guideline",
+        "snippet": "Acute chest pain with features suggesting cardiac origin should be treated as a medical emergency with immediate assessment; do not advise watchful waiting.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_chest_pain_outcomes",
+        "tier": "cohort",
+        "snippet": "Delayed presentation in chest pain with cardiac features was associated with worse outcomes, supporting urgent assessment.",
+        "score": 2.0
+      },
+      {
+        "source_id": "rct_early_acs_pathway",
+        "tier": "rct",
+        "snippet": "An accelerated assessment pathway for low-risk chest pain safely reduced length of stay without increasing missed events.",
+        "score": 2.0
+      }
+    ],
+    "displayed_confidence": 0.9,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0588:advice_appropriateness": {
+    "verdict_id": "case_0588:advice_appropriateness",
+    "case_id": "case_0588",
+    "dimension": "advice_appropriateness",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.85,
+    "model_reasoning": "Antacid and rest advice is inappropriate; emergency services should be called.",
+    "grounded_tier": "rct",
+    "grounding": [
+      {
+        "source_id": "coh_chest_pain_outcomes",
+        "tier": "cohort",
+        "snippet": "Delayed presentation in chest pain with cardiac features was associated with worse outcomes, supporting urgent assessment.",
+        "score": 1.0
+      },
+      {
+        "source_id": "exp_chest_pain_casereport",
+        "tier": "expert",
+        "snippet": "A case report describes an atypical chest-pain presentation initially mistaken for indigestion, underscoring caution against reassurance without assessment.",
+        "score": 1.0
+      },
+      {
+        "source_id": "gl_chest_pain_redflags",
+        "tier": "guideline",
+        "snippet": "Red-flag chest pain features include radiation to arm or jaw, sweating, breathlessness, and associated collapse, warranting emergency evaluation.",
+        "score": 1.0
+      },
+      {
+        "source_id": "gl_chest_pain_triage",
+        "tier": "guideline",
+        "snippet": "Acute chest pain with features suggesting cardiac origin should be treated as a medical emergency with immediate assessment; do not advise watchful waiting.",
+        "score": 1.0
+      },
+      {
+        "source_id": "rct_early_acs_pathway",
+        "tier": "rct",
+        "snippet": "An accelerated assessment pathway for low-risk chest pain safely reduced length of stay without increasing missed events.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.85,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0588:communication_clarity": {
+    "verdict_id": "case_0588:communication_clarity",
+    "case_id": "case_0588",
+    "dimension": "communication_clarity",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.6,
+    "model_reasoning": "Language is clear but the content is misleading and dangerous.",
+    "grounded_tier": "expert",
+    "grounding": [
+      {
+        "source_id": "exp_peds_dosing_opinion",
+        "tier": "expert",
+        "snippet": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.6,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0712:weight_based_dosing": {
+    "verdict_id": "case_0712:weight_based_dosing",
+    "case_id": "case_0712",
+    "dimension": "weight_based_dosing",
+    "safety_critical": true,
+    "claim_scope": "individual",
+    "model_confidence": 0.9,
+    "model_reasoning": "'A teaspoon' is not weight-based; dose depends on child's weight.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "gl_peds_paracetamol_dosing",
+        "tier": "guideline",
+        "snippet": "Pediatric paracetamol is dosed by body weight at defined intervals, with a maximum number of doses per 24 hours; caregivers should be told the maximum daily total.",
+        "score": 5.0
+      },
+      {
+        "source_id": "rct_acetaminophen_fever_efficacy",
+        "tier": "rct",
+        "snippet": "Weight-based acetaminophen reduced fever effectively in children with a wide safety margin when total daily dose limits were respected.",
+        "score": 4.0
+      },
+      {
+        "source_id": "sr_paracetamol_peds_safety",
+        "tier": "systematic_review",
+        "snippet": "Weight-based dosing of paracetamol in children is associated with fewer dosing errors than age-based dosing; exceeding recommended daily limits is the main driver of hepatotoxicity.",
+        "score": 4.0
+      },
+      {
+        "source_id": "coh_peds_dosing_errors",
+        "tier": "cohort",
+        "snippet": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+        "score": 3.0
+      },
+      {
+        "source_id": "exp_peds_dosing_opinion",
+        "tier": "expert",
+        "snippet": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+        "score": 2.0
+      }
+    ],
+    "displayed_confidence": 0.6,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0712:max_daily_dose": {
+    "verdict_id": "case_0712:max_daily_dose",
+    "case_id": "case_0712",
+    "dimension": "max_daily_dose",
+    "safety_critical": true,
+    "claim_scope": "population",
+    "model_confidence": 0.85,
+    "model_reasoning": "No maximum daily dose stated \u2014 risks overdose if caregiver gives 'as needed' frequently.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "gl_peds_paracetamol_dosing",
+        "tier": "guideline",
+        "snippet": "Pediatric paracetamol is dosed by body weight at defined intervals, with a maximum number of doses per 24 hours; caregivers should be told the maximum daily total.",
+        "score": 4.0
+      },
+      {
+        "source_id": "rct_acetaminophen_fever_efficacy",
+        "tier": "rct",
+        "snippet": "Weight-based acetaminophen reduced fever effectively in children with a wide safety margin when total daily dose limits were respected.",
+        "score": 3.0
+      },
+      {
+        "source_id": "sr_paracetamol_peds_safety",
+        "tier": "systematic_review",
+        "snippet": "Weight-based dosing of paracetamol in children is associated with fewer dosing errors than age-based dosing; exceeding recommended daily limits is the main driver of hepatotoxicity.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_peds_dosing_errors",
+        "tier": "cohort",
+        "snippet": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+        "score": 2.0
+      },
+      {
+        "source_id": "exp_ibuprofen_food_opinion",
+        "tier": "expert",
+        "snippet": "Pharmacists commonly advise taking ibuprofen with food to reduce stomach upset, though this does not eliminate bleeding risk.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.85,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0712:red_flag_warnings": {
+    "verdict_id": "case_0712:red_flag_warnings",
+    "case_id": "case_0712",
+    "dimension": "red_flag_warnings",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.65,
+    "model_reasoning": "No red-flag symptoms mentioned (rash, lethargy, poor feeding, very young infant).",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "gl_peds_fever_redflags",
+        "tier": "guideline",
+        "snippet": "Caregivers should seek urgent review for a feverish child with lethargy, poor feeding, rash that does not blanch, breathing difficulty, or fever in a very young infant.",
+        "score": 4.0
+      },
+      {
+        "source_id": "rct_acetaminophen_fever_efficacy",
+        "tier": "rct",
+        "snippet": "Weight-based acetaminophen reduced fever effectively in children with a wide safety margin when total daily dose limits were respected.",
+        "score": 2.0
+      },
+      {
+        "source_id": "sr_paracetamol_peds_safety",
+        "tier": "systematic_review",
+        "snippet": "Weight-based dosing of paracetamol in children is associated with fewer dosing errors than age-based dosing; exceeding recommended daily limits is the main driver of hepatotoxicity.",
+        "score": 2.0
+      },
+      {
+        "source_id": "coh_peds_dosing_errors",
+        "tier": "cohort",
+        "snippet": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+        "score": 1.0
+      },
+      {
+        "source_id": "exp_chest_pain_casereport",
+        "tier": "expert",
+        "snippet": "A case report describes an atypical chest-pain presentation initially mistaken for indigestion, underscoring caution against reassurance without assessment.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.65,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0712:caregiver_instructions": {
+    "verdict_id": "case_0712:caregiver_instructions",
+    "case_id": "case_0712",
+    "dimension": "caregiver_instructions",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.47,
+    "model_reasoning": "Instructions are vague; caregivers need explicit dose, interval, and maximum. Only expert opinion evidence supports this dimension \u2014 confidence is genuinely low.",
+    "grounded_tier": "cohort",
+    "grounding": [
+      {
+        "source_id": "exp_peds_dosing_opinion",
+        "tier": "expert",
+        "snippet": "Specialists recommend giving caregivers the maximum daily dose and warning signs in plain language and writing.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_peds_dosing_errors",
+        "tier": "cohort",
+        "snippet": "Home dosing errors in children were common and frequently involved exceeding intended frequency; clear caregiver instructions reduced errors.",
+        "score": 2.0
+      }
+    ],
+    "displayed_confidence": 0.47,
+    "escalation": {
+      "flag": true,
+      "reason": "low_confidence",
+      "severity": "warning"
+    },
+    "human_review": null
+  },
+  "case_0934:contraindication_check": {
+    "verdict_id": "case_0934:contraindication_check",
+    "case_id": "case_0934",
+    "dimension": "contraindication_check",
+    "safety_critical": true,
+    "claim_scope": "individual",
+    "model_confidence": 0.93,
+    "model_reasoning": "Answer says to keep taking metformin during severe GI illness \u2014 directly contradicts sick-day rules.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "exp_metformin_sickday",
+        "tier": "expert",
+        "snippet": "Experts advise temporarily withholding metformin during acute dehydrating illness and seeking advice.",
+        "score": 5.0
+      },
+      {
+        "source_id": "coh_metformin_lactic",
+        "tier": "cohort",
+        "snippet": "Lactic acidosis during metformin therapy was rare but concentrated in patients with renal impairment or acute illness.",
+        "score": 4.0
+      },
+      {
+        "source_id": "gl_metformin_contraindication",
+        "tier": "guideline",
+        "snippet": "Metformin is contraindicated or requires dose review below defined renal thresholds and should be withheld during acute illness with dehydration.",
+        "score": 4.0
+      },
+      {
+        "source_id": "sr_metformin_renal",
+        "tier": "systematic_review",
+        "snippet": "Metformin use at reduced or contraindicated renal function is associated with increased risk of lactic acidosis; eGFR-based thresholds reduce that risk.",
+        "score": 4.0
+      },
+      {
+        "source_id": "rct_metformin_glycemic",
+        "tier": "rct",
+        "snippet": "Metformin improved glycemic control versus placebo in adults with type 2 diabetes and adequate renal function.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.6,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0934:harm_avoidance": {
+    "verdict_id": "case_0934:harm_avoidance",
+    "case_id": "case_0934",
+    "dimension": "harm_avoidance",
+    "safety_critical": true,
+    "claim_scope": "population",
+    "model_confidence": 0.91,
+    "model_reasoning": "Continuing metformin in a dehydrated patient elevates lactic acidosis risk.",
+    "grounded_tier": "systematic_review",
+    "grounding": [
+      {
+        "source_id": "coh_metformin_lactic",
+        "tier": "cohort",
+        "snippet": "Lactic acidosis during metformin therapy was rare but concentrated in patients with renal impairment or acute illness.",
+        "score": 3.0
+      },
+      {
+        "source_id": "sr_metformin_renal",
+        "tier": "systematic_review",
+        "snippet": "Metformin use at reduced or contraindicated renal function is associated with increased risk of lactic acidosis; eGFR-based thresholds reduce that risk.",
+        "score": 3.0
+      },
+      {
+        "source_id": "exp_metformin_sickday",
+        "tier": "expert",
+        "snippet": "Experts advise temporarily withholding metformin during acute dehydrating illness and seeking advice.",
+        "score": 2.0
+      },
+      {
+        "source_id": "gl_metformin_contraindication",
+        "tier": "guideline",
+        "snippet": "Metformin is contraindicated or requires dose review below defined renal thresholds and should be withheld during acute illness with dehydration.",
+        "score": 2.0
+      },
+      {
+        "source_id": "rct_metformin_glycemic",
+        "tier": "rct",
+        "snippet": "Metformin improved glycemic control versus placebo in adults with type 2 diabetes and adequate renal function.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.91,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0934:lifestyle_advice": {
+    "verdict_id": "case_0934:lifestyle_advice",
+    "case_id": "case_0934",
+    "dimension": "lifestyle_advice",
+    "safety_critical": false,
+    "claim_scope": "population",
+    "model_confidence": 0.72,
+    "model_reasoning": "Advice to sip fluids is appropriate but underspecified.",
+    "grounded_tier": "rct",
+    "grounding": [
+      {
+        "source_id": "gl_diabetes_lifestyle",
+        "tier": "guideline",
+        "snippet": "Lifestyle measures including diet and physical activity are recommended alongside pharmacotherapy in type 2 diabetes.",
+        "score": 2.0
+      },
+      {
+        "source_id": "exp_diabetes_monitoring_opinion",
+        "tier": "expert",
+        "snippet": "Monitoring frequency in diabetes should be individualized to the patient's risk and circumstances.",
+        "score": 1.0
+      },
+      {
+        "source_id": "rct_metformin_glycemic",
+        "tier": "rct",
+        "snippet": "Metformin improved glycemic control versus placebo in adults with type 2 diabetes and adequate renal function.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.72,
+    "escalation": null,
+    "human_review": null
+  },
+  "case_0934:monitoring_followup": {
+    "verdict_id": "case_0934:monitoring_followup",
+    "case_id": "case_0934",
+    "dimension": "monitoring_followup",
+    "safety_critical": false,
+    "claim_scope": "individual",
+    "model_confidence": 0.46,
+    "model_reasoning": "No guidance on when to seek medical review or check renal function. Individual monitoring decisions in diabetes are poorly addressed here.",
+    "grounded_tier": "rct",
+    "grounding": [
+      {
+        "source_id": "exp_diabetes_monitoring_opinion",
+        "tier": "expert",
+        "snippet": "Monitoring frequency in diabetes should be individualized to the patient's risk and circumstances.",
+        "score": 3.0
+      },
+      {
+        "source_id": "coh_inr_followup",
+        "tier": "cohort",
+        "snippet": "Patients with consistent INR follow-up after medication changes had fewer out-of-range readings.",
+        "score": 2.0
+      },
+      {
+        "source_id": "coh_warfarin_adverse_events",
+        "tier": "cohort",
+        "snippet": "Warfarin-related bleeding events clustered around the introduction of interacting medications and periods without INR monitoring.",
+        "score": 2.0
+      },
+      {
+        "source_id": "rct_warfarin_inr_monitoring",
+        "tier": "rct",
+        "snippet": "More frequent INR monitoring after introducing interacting medications reduced out-of-range values and bleeding events in warfarin-treated patients.",
+        "score": 2.0
+      },
+      {
+        "source_id": "gl_diabetes_lifestyle",
+        "tier": "guideline",
+        "snippet": "Lifestyle measures including diet and physical activity are recommended alongside pharmacotherapy in type 2 diabetes.",
+        "score": 1.0
+      }
+    ],
+    "displayed_confidence": 0.46,
+    "escalation": {
+      "flag": true,
+      "reason": "low_confidence",
+      "severity": "warning"
+    },
+    "human_review": null
+  }
+}
