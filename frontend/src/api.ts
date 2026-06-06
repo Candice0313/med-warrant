@@ -1,6 +1,6 @@
 import type { Case, CaseSummary, JudgeResponse, Verdict } from "./types";
 
-const BASE = import.meta.env.VITE_API_BASE_URL || "https://med-warrant-production.up.railway.app";
+const BASE = "https://med-warrant-production.up.railway.app";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
