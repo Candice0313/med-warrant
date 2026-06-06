@@ -9,10 +9,10 @@ from typing import Optional
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-import db
-from grader import grade_case
-from llm_provider import get_provider
-from models import (
+from . import db
+from .grader import grade_case
+from .llm_provider import get_provider
+from .models import (
     Case,
     CaseSummary,
     EvidenceSource,
@@ -21,7 +21,7 @@ from models import (
     Summary,
     Verdict,
 )
-from evidence_store import all_sources
+from .evidence_store import all_sources
 
 app = FastAPI(title="Medical LLM-as-Judge", version="0.1.0")
 
