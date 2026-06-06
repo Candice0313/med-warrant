@@ -82,7 +82,7 @@ export function ProfileRadar({ verdicts, dimensions }: Props) {
           fillOpacity={0.2}
           dot={<BandDot />}
         />
-        <Tooltip formatter={(v: number) => `${Math.round(v * 100)}%`} />
+        <Tooltip formatter={(v) => typeof v === "number" ? `${Math.round(v * 100)}%` : v} />
         <Legend />
       </RadarChart>
     </ResponsiveContainer>
