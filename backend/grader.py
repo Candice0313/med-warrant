@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from capping import cap_confidence
-from escalation import escalation
-from evidence_store import retrieve
-from llm_provider import LLMProvider
-from models import Case, Dimension, Verdict, EscalationFlag
-from tier_classifier import classify
+from .capping import cap_confidence
+from .escalation import escalation
+from .evidence_store import retrieve
+from .llm_provider import LLMProvider
+from .models import Case, Dimension, Verdict, EscalationFlag
+from .tier_classifier import classify
 
 
 def grade_dimension(

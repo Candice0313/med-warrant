@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
-from models import Verdict, ReviewRequest
+from .models import Verdict, ReviewRequest
 
 _DB_PATH = Path(__file__).parent.parent / "data" / "verdicts.json"
 

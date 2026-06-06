@@ -16,7 +16,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from escalation import LOW_CONFIDENCE_ESCALATION, escalation  # re-export for callers
+from .escalation import LOW_CONFIDENCE_ESCALATION, escalation  # re-export for callers
 
 __all__ = [
     "EVIDENCE_CEILINGS",

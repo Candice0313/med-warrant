@@ -5,9 +5,9 @@ Rule-based for Phase 1: take the top-scored source's tier; fall back to model_pr
 
 from __future__ import annotations
 
-from capping import EVIDENCE_CEILINGS
-from evidence_store import RetrievedSource
-from models import GroundingSnippet
+from .capping import EVIDENCE_CEILINGS
+from .evidence_store import RetrievedSource
+from .models import GroundingSnippet
 
 _TIER_STRENGTH = {t: c for t, c in EVIDENCE_CEILINGS.items()}
 

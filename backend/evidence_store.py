@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from dataclasses import dataclass
 
-from models import EvidenceSource
+from .models import EvidenceSource
 
 _DATA_DIR = Path(__file__).parent.parent / "data" / "evidence"
 
