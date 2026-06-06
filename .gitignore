@@ -35,3 +35,11 @@ frontend/.env.local
 
 # Data (optional - remove if you want to version control)
 # data/verdicts.json
+
+# Development documentation (local only)
+docs/superpowers/
+docs/演示指南.md
+docs/系统说明.md
+literature-summary.md
+medical-judge-demo-spec.md
+README.md
