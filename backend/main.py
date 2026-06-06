@@ -28,8 +28,10 @@ app = FastAPI(title="Medical LLM-as-Judge", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    allow_credentials=False,
+    expose_headers=["*"],
 )
 
 _CASES_DIR = Path(__file__).parent.parent / "data" / "cases"
