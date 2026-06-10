@@ -107,6 +107,51 @@
     }
     .hero-cta:hover { background: #364fc7; transform: translateY(-1px); }
 
+    /* ── KEY CONCEPTS ── */
+    .concepts-wrap {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 48px 72px;
+    }
+    .concepts-label {
+      font-size: 11px; font-weight: 700; color: var(--gray-400);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 820px) {
+      .concepts-grid { grid-template-columns: 1fr; }
+    }
+    .concept-card {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 22px 22px 20px;
+      background: #fff;
+    }
+    .concept-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #edf2ff; color: var(--indigo);
+      font-size: 11px; font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .concept-card h3 {
+      font-size: 14px; font-weight: 700; color: var(--gray-900);
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .concept-card p {
+      font-size: 13px; color: var(--gray-600);
+      line-height: 1.65; margin: 0;
+    }
+    .concept-card code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; background: var(--gray-100);
+      padding: 1px 5px; border-radius: 4px;
+    }
+
     /* ── DIVIDER ── */
     .divider {
       max-width: 760px; margin: 0 auto;
@@ -321,6 +366,7 @@
 <nav>
   <div class="nav-logo"><div class="nav-dot"></div> Med-Warrant</div>
   <div class="nav-links">
+    <a href="#concepts">Key concepts</a>
     <a href="#problem">The Problem</a>
     <a href="#thesis">Design Thesis</a>
     <a href="#demo">Demo</a>
@@ -344,6 +390,45 @@
     <span>→</span>
   </a>
 </div>
+
+<!-- KEY CONCEPTS -->
+<div class="concepts-wrap" id="concepts">
+  <div class="concepts-label">Before you open the demo</div>
+  <div class="concepts-grid">
+
+    <div class="concept-card">
+      <div class="concept-num">1</div>
+      <h3>Verdict</h3>
+      <p>
+        The judge's assessment of the candidate answer on a given dimension —
+        e.g. <code>PASS</code>, <code>FAIL</code>, <code>PARTIAL</code>, or
+        <code>NEEDS REVIEW</code>.
+      </p>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-num">2</div>
+      <h3>Judge confidence</h3>
+      <p>
+        How certain the judge model is about <em>that verdict</em>.
+        It is <strong>not</strong> a quality score for the candidate answer.
+      </p>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-num">3</div>
+      <h3>Evidence tier &amp; displayed confidence</h3>
+      <p>
+        Evidence tier is the strength of external evidence supporting the verdict.
+        <strong>Displayed confidence</strong> is the lower of judge raw confidence
+        and the evidence ceiling.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider" />
 
 <!-- LITERATURE -->
 <div class="prose" id="literature">
