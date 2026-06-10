@@ -812,21 +812,8 @@
   </p>
   <p>
     For those dimensions only, displayed confidence is also capped at
-    <strong>60%</strong>, regardless of evidence tier. The cap is enforced by tests
-    as system invariant #4. It does not trigger escalation on its own (escalation still
-    requires safety + T6, or displayed confidence below 50%).
+    <strong>60%</strong>, regardless of evidence tier.
   </p>
-
-  <div style="margin:28px 0;padding:20px 24px;background:#fffbf5;border-radius:12px;border:1.5px solid #ffe8cc">
-    <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px">How the caps combine</div>
-    <p style="font-size:14px;color:var(--gray-700);line-height:1.75;margin:0;font-family:'JetBrains Mono',monospace">
-      displayed = min(judge raw, evidence tier ceiling, individual cap if scope = individual)
-    </p>
-    <p style="font-size:13px;color:var(--gray-600);line-height:1.7;margin:12px 0 0">
-      A case is not "all 60%." Only the dimensions tagged individual hit this extra ceiling;
-      population dimensions in the same evaluation can still show 75%, 85%, or higher.
-    </p>
-  </div>
 </div>
 
 <hr class="divider" />
