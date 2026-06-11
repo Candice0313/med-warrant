@@ -119,10 +119,10 @@
     }
     .concepts-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-    @media (max-width: 640px) {
+    @media (max-width: 820px) {
       .concepts-grid { grid-template-columns: 1fr; }
     }
     .concept-card {
@@ -421,19 +421,8 @@
       <h3>Evidence tier &amp; displayed confidence</h3>
       <p>
         Evidence tier is the strength of external evidence supporting the verdict.
-        <strong>Displayed confidence</strong> is judge raw confidence clamped down
-        by the evidence ceiling — and, for some dimensions, an additional individual-scope cap.
-      </p>
-    </div>
-
-    <div class="concept-card">
-      <div class="concept-num">4</div>
-      <h3>Claim scope (individual vs population)</h3>
-      <p>
-        Each dimension is tagged <code>population</code> or <code>individual</code>.
-        EBM tiers grade group-level evidence; claims about applying something to
-        <em>this specific patient</em> are capped at <strong>60%</strong>, regardless of tier.
-        Other dimensions in the same case are unaffected.
+        <strong>Displayed confidence</strong> is the lower of judge raw confidence
+        and the evidence ceiling.
       </p>
     </div>
 
